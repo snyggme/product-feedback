@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+
+import manager from './assets/sticker.png';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+	<div>
+		<nav className='flex-nav'>
+			<ul >
+				<li className='nav-logo'>
+					<a href='/'>Logo</a>
+				</li>
+				<li className='nav-feedbacks'>
+					<a href='/'>Feedbacks</a>
+				</li>
+				<li className='nav-login'>
+					<a href='/'>Log in</a>
+				</li>
+				<li className='nav-signup'>
+					<button className='btn-black'>Sign Up</button>
+				</li>
+			</ul>
+		</nav>
+		<section className="home">
+			<div className='welcome'>
+				<div>
+					<h1><div className='features'>Create features</div> It’s time to feedback on your terms</h1>
+					<p>Product feedback app is amazing platform that allows you to create honest ratings of your favorite tools and cooperate with others.</p>
+					<button className='btn-black'>Get started</button>
+				</div>
+				<img alt='wizard' src={manager}></img>
+			</div>
+		</section>
+	</div>
   );
 }
 
