@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 function Navbar({ onClick }) {
@@ -8,10 +9,10 @@ function Navbar({ onClick }) {
                     <img alt='logo' src={logo} />
                 </li>
                 <li className='nav-feedbacks'>
-                    <p href='/'>Feedbacks</p>
+                    <Link to='/feedbacks' className='nav-element-underline'>Feedbacks</Link>
                 </li>
                 <li className='nav-login'>
-                    <p href='' onClick={onClick('login')}>Log in</p>
+                    <p className='nav-element-underline' onClick={onClick('login')}>Log in</p>
                 </li>
                 <li className='nav-signup'>
                     <button className='btn-black' onClick={onClick('signup')}>Sign Up</button>
@@ -20,5 +21,5 @@ function Navbar({ onClick }) {
         </nav>
     )
 }
-
+// <p href='/'>Feedbacks</p>
 export default Navbar;

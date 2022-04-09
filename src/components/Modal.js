@@ -1,6 +1,22 @@
+import { connect } from 'react-redux';
+import { createUser, signinUser } from '../actions/AuthAction';
 import SignForm from "./SignForm";
 
-function Modal({ type, setModal }) {
+const mapStateToProps = store => {
+    return {
+        auth: store.auth 
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        signinUser: (user) => dispatch(signinUser(user)),
+        createUser: (user) => dispatch(createUser(user))
+    }
+}
+
+function Modal(props) {
+    const { type, setModal } = props;
 
     const handleClick = () => {
         setModal({
@@ -13,10 +29,13 @@ function Modal({ type, setModal }) {
         <div className='modal'>
             <div className="modal-content">
                 <div className="close" onClick={handleClick}>&times;</div>
-                <SignForm type={type} setModal={setModal}/>
+                <SignForm {...props}/>
             </div>
         </div>
     )
 }
 
-export default Modal;
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Modal);

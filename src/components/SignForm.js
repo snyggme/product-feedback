@@ -1,12 +1,15 @@
 import React, { useRef } from 'react';
 
-function SignForm({ type, setModal }) {
+function SignForm(props) {
+    const { type, setModal } = props;
+
     const inputName = useRef(null);
     const inputPass = useRef(null);
     const inputEmail = useRef(null);
 
     const handleClick = (type) => (e) => {
         e.preventDefault();
+
         setModal({
             show: true,
             type
@@ -15,12 +18,16 @@ function SignForm({ type, setModal }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
     }
 
     const validate = ({ username, password }) => {
 
     }
+
+    const { isSigning } = props.auth;
+
+    if (isSigning)
+        return <div className='loading' />
 
     return (
         <div>
