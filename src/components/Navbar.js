@@ -6,10 +6,12 @@ function Navbar({ onClick }) {
         <nav className='flex-nav'>
             <ul >
                 <li className='nav-logo'>
-                    <img alt='logo' src={logo} />
+                    <Link to='/'>
+                        <img alt='logo' src={logo} />
+                    </Link>
                 </li>
                 <li className='nav-feedbacks'>
-                    <Link to='/feedbacks' className='nav-element-underline'>Feedbacks</Link>
+                    <Link to='/feedbacks' className='nav-element-underline'>Products</Link>
                 </li>
                 <li className='nav-login'>
                     <p className='nav-element-underline' onClick={onClick('login')}>Log in</p>
