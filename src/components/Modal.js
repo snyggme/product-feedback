@@ -9,7 +9,6 @@ function Modal({ type, setModal }) {
         })
     }
     
-
     return (
         <div className='modal'>
             <div className="modal-content">

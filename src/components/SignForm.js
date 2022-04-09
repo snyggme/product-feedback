@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 function SignForm({ type, setModal }) {
-
-    const inputName = React.createRef();
-    const inputPass = React.createRef();
-    const inputEmail = React.createRef();
+    const inputName = useRef(null);
+    const inputPass = useRef(null);
+    const inputEmail = useRef(null);
 
     const handleClick = (type) => (e) => {
         e.preventDefault();
@@ -16,6 +15,7 @@ function SignForm({ type, setModal }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
     }
 
     const validate = ({ username, password }) => {
@@ -24,7 +24,7 @@ function SignForm({ type, setModal }) {
 
     return (
         <div>
-            <form id='login-form' onSubmit={handleSubmit}>
+            <form id='sign-form' onSubmit={handleSubmit}>
                 <input 
                     required 
                     ref={inputName} 
@@ -52,22 +52,21 @@ function SignForm({ type, setModal }) {
                     id="password" 
                     placeholder="Password" 
                 />
-                <button type="submit" id="login-btn">{type}</button>
+                <button type="submit" className="btn-black">{type === 'signup' ? 'Create account' : 'Log in'}</button>
+                {
+                    type === 'signup'
+                    ? (
+                        <p className='signup-q'>
+                            Already have an account? <a href='/' onClick={handleClick('login')}>Log In</a> 
+                        </p>
+                    )
+                    : (
+                        <p className='signup-q'>
+                            Don't have an account? <a href='/' onClick={handleClick('signup')}>Sign Up</a> 
+                        </p>                   
+                    )
+                }
             </form>
-            {
-                type === 'signup'
-                ? (
-                    <p className='signup-q'>
-                        Already have an account? <a href='/' onClick={handleClick('login')}>Log In</a> 
-                    </p>
-                )
-                : (
-                    <p className='signup-q'>
-                        Don't have an account? <a href='/' onClick={handleClick('signup')}>Sign Up</a> 
-                    </p>                   
-                )
-            }
-
         </div>
     )
 }

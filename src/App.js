@@ -19,7 +19,7 @@ function App() {
   	return (
 		<div>
 			<Navbar onClick={handleClick}/>
-			<Home />
+			<Home setModal={setModal}/>
 			{ modal.show && <Modal type={modal.type} setModal={setModal}/> }
 		</div>
   	);
