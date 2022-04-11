@@ -1,11 +1,11 @@
-
+import { Link } from 'react-router-dom';
  
-function ProductItem({ name }) {
+function ProductItem({ name, description }) {
     return (
         <div className="product-item">
-            <div><p>Name: </p>{name}</div>
-            <div><p>Preview: </p>Lorem Ipsum</div>
-            <div><a href=''>See feedbacks</a></div>
+            <div className="product-item-name"><b>Product: </b>{name}</div>
+            <div className="product-item-desc">{description}</div>
+            <div className="product-item-link"><Link className='element-underline-width' to='/'>See feedbacks</Link></div>
         </div>
     )
 }

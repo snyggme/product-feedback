@@ -11,10 +11,10 @@ function Navbar({ onClick }) {
                     </Link>
                 </li>
                 <li className='nav-feedbacks'>
-                    <Link to='/feedbacks' className='nav-element-underline'>Products</Link>
+                    <Link to='/feedbacks' className='element-underline'>Products</Link>
                 </li>
                 <li className='nav-login'>
-                    <p className='nav-element-underline' onClick={onClick('login')}>Log in</p>
+                    <p className='element-underline' onClick={onClick('login')}>Log in</p>
                 </li>
                 <li className='nav-signup'>
                     <button className='btn-black' onClick={onClick('signup')}>Sign Up</button>
@@ -23,5 +23,5 @@ function Navbar({ onClick }) {
         </nav>
     )
 }
-// <p href='/'>Feedbacks</p>
+
 export default Navbar;
