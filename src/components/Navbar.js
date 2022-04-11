@@ -11,7 +11,7 @@ function Navbar({ onClick }) {
                     </Link>
                 </li>
                 <li className='nav-feedbacks'>
-                    <Link to='/feedbacks' className='element-underline'>Products</Link>
+                    <Link to='/products' className='element-underline'>Products</Link>
                 </li>
                 <li className='nav-login'>
                     <p className='element-underline' onClick={onClick('login')}>Log in</p>

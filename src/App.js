@@ -3,6 +3,7 @@ import Modal from './components/Modal';
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Products from "./components/Products";
+import Feedbacks from "./components/Feedbacks";
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -21,11 +22,20 @@ function App() {
   	return (
 		<div>
 			<Navbar onClick={handleClick}/>
+			{ modal.show && <Modal type={modal.type} setModal={setModal}/> }
 			<Routes>
 				<Route path='/' element={<Home setModal={setModal}/>} />
-				<Route path='/feedbacks' element={<Products />} />
+				<Route path='/products' element={<Products />} />
+				<Route path='/products/:productId' element={<Feedbacks />} />
+				<Route
+					path="*"
+					element={
+						<main style={{ padding: "1rem" }}>
+						<p>There's nothing here!</p>
+						</main>
+					}
+				/>
 			</Routes>
-			{ modal.show && <Modal type={modal.type} setModal={setModal}/> }
 		</div>
   	);
 }
