@@ -5,92 +5,84 @@ const products = [
         feedbacks: [
             {
                 title: 'add tags for coolness',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add image/video upload',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add dark theme option',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add ability to follow others',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
@@ -103,92 +95,84 @@ const products = [
         feedbacks: [
             {
                 title: 'add tags for coolness',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add image/video upload',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add dark theme option',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add ability to follow others',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
@@ -201,92 +185,84 @@ const products = [
         feedbacks: [
             {
                 title: 'add tags for coolness',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add image/video upload',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add dark theme option',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add ability to follow others',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
@@ -299,92 +275,84 @@ const products = [
         feedbacks: [
             {
                 title: 'add tags for coolness',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add image/video upload',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add dark theme option',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add ability to follow others',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
@@ -397,92 +365,84 @@ const products = [
         feedbacks: [
             {
                 title: 'add tags for coolness',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add image/video upload',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add dark theme option',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]
             },
             {
                 title: 'add ability to follow others',
+                votes: 123,
                 comments: [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        votes: 123,
                         type: 'feature'
                     },
                 ]

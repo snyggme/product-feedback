@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLightbulb } from '@fortawesome/free-solid-svg-icons'
+import { faFeed } from '@fortawesome/free-solid-svg-icons';
 
 function FeedbacksTitle({ titleNumber }) {
 
     return (
         <div className='feedbacks-items-title'>
-            {/* <FontAwesomeIcon icon="fa-regular fa-lightbulb-on" /> */}
-            <FontAwesomeIcon icon={faLightbulb} />
-            {titleNumber} Feedbacks
-            <button>+ Add feedback</button>
+            <FontAwesomeIcon icon={faFeed} size='xl'/>
+            <span className='feedbacks-items-title-number'>{titleNumber} Feedbacks</span>
+            <p className='feedbacks-items-title-sortby'><span>Sort by :</span> Most Upvotes</p>  
+            <button className='feedbacks-items-title-add-btn'>+ Add feedback</button>
         </div>
     )
 }

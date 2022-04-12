@@ -1,10 +1,11 @@
 
 
-function FeedbackItem({ feedbacks }) {
-
+function FeedbackItem({ title, votes, comments }) {
+    
     return (
-        <div className='feedback-item'>
-            
+        <div className='feedbacks-item'>
+            <div className='feedbacks-item-upvotes'>{votes}</div>
+            {title}
         </div>
     )
 }
