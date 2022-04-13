@@ -352,27 +352,27 @@ const products = [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        
+                        childs: []
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        
+                        childs: []
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        
+                        childs: []
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        
+                        childs: []
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        
+                        childs: []
                     },
                 ]
             },
@@ -386,17 +386,17 @@ const products = [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        
+                        childs: []
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        
+                        childs: []
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        
+                        childs: []
                     },
                 ]
             },
@@ -410,22 +410,22 @@ const products = [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        
+                        childs: []
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        
+                        childs: []
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        
+                        childs: []
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        
+                        childs: []
                     },
                 ]
             },
@@ -439,14 +439,24 @@ const products = [
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        
+                        childs: [
+                            {
+                                username: 'alice',
+                                text: 'nested comment',
+                                childs: [] 
+                            },
+                            {
+                                username: 'jhon',
+                                text: 'nested comment',
+                                childs: [] 
+                            }
+                        ]
                     },
                     {
                         username: 'bob',
                         text: 'uuuuu doing comments',
-                        
+                        childs: []
                     },
-
                 ]
             }
         ]

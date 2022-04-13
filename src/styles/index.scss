@@ -140,6 +140,21 @@ button.btn-black {
 	}
 }
 
+div.go-back-button {
+	padding: 40px 20px;
+	transition: all 0.2s ease-in-out;
+
+	& > * {
+		text-decoration: none;
+		color: black;
+		font-weight: 700;
+	}
+
+	&:hover {
+		color: #751692;
+	}
+}
+
 .flex-nav {
 	font-size: 1.2em;
 	font-weight: 700;
@@ -293,21 +308,6 @@ button.btn-black {
 	max-width: 1200px;
     margin: 0 auto;
 
-	.go-back-button {
-		padding: 40px 20px;
-		transition: all 0.2s ease-in-out;
-
-		& > * {
-			text-decoration: none;
-			color: black;
-			font-weight: 700;
-		}
-
-		&:hover {
-			color: #751692;
-		}
-	}
-
 	.choose-feedback-type {
 		border: 2px solid black;
 		border-radius: 10px;
@@ -410,75 +410,153 @@ button.btn-black {
 				}
 			}
 		}
+	}
+}
 
-		.feedbacks-item {
-			border: 2px solid black;
-			border-radius: 8px;
-			box-shadow: 5px 10px 15px 0px rgba(0,0,0,0.1);
-			min-height: 170px;
-			padding: 40px 50px;
-			display: flex;
-			flex-direction: row;
-			justify-content: flex-start;
-			
-			.feedbacks-item-upvotes > div {
-				font-size: smaller;
-				width: 40px;
-				background-color: #e1e4ef;
-				box-shadow: 3px 3px 0px 0px #171e27;
-				padding: 8px 8px;
-				border-radius: 8px;
-				text-align: center;
-				transition: all 150ms ease;
+.feedbacks-item {
+	border: 2px solid black;
+	border-radius: 8px;
+	box-shadow: 5px 10px 15px 0px rgba(0,0,0,0.1);
+	min-height: 170px;
+	padding: 40px 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	
+	.feedbacks-item-upvotes > div {
+		font-size: smaller;
+		width: 40px;
+		background-color: #e1e4ef;
+		box-shadow: 3px 3px 0px 0px #171e27;
+		padding: 8px 8px;
+		border-radius: 8px;
+		text-align: center;
+		transition: all 150ms ease;
 
-				&:hover {
-					box-shadow: 3px 3px 0px 0px #751692;
-					cursor: pointer;
-				}
+		&:hover {
+			box-shadow: 3px 3px 0px 0px #751692;
+			cursor: pointer;
+		}
 
-				&:active {
-					box-shadow: none;
-					transform: translateY(4px);
-				}
-				
+		&:active {
+			box-shadow: none;
+			transform: translateY(4px);
+		}
+		
+	}
+
+	.feedbacks-item-main {
+		margin-left: 40px;
+		width: 80%;
+
+		.feedbacks-item-main-title {
+			font-size: larger;
+			font-weight: 700;
+			padding-bottom: 10px;
+		}
+
+		.feedbacks-item-main-desc {
+			padding-bottom: 15px;
+		}
+
+		.feedbacks-item-main-type {
+			display: inline-block;
+			background-color: #e1e4ef;
+			color: #3498db;
+			padding: 5px 15px;
+			border-radius: 10px;
+		}
+	}
+
+	.feedbacks-item-msg-count {
+		margin-left: auto;
+		align-self: center;
+		transition: all 0.2s ease-in-out;
+
+		& > * {
+			text-decoration: none;
+			color:#3498db;
+		}
+		
+		&:hover {
+			transform: scale(1.2);
+			cursor: pointer;
+		}
+	}
+}
+
+.feedback-comments-container {
+	display: grid;
+	grid-template-columns: 1fr;
+	max-width: 750px;
+	gap: 30px;
+    margin: 0 auto;
+
+	.feedback-comments-edit-panel {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+
+		button {
+			margin-left: auto;
+			border: none;
+			border-radius: 10px;
+			padding: 15px 25px;
+			color: white;
+			background-color: #3498db;
+			transition: all 150ms ease;
+
+			&:active {
+				color: black;
+				background-color: wheat;
+				transform: translateY(4px);
+			}
+		}
+	}
+	
+	.feedback-comments-all-msgs {
+		color: white;
+		border: 2px solid black;
+		padding: 30px 30px;
+		padding-top: 0px;
+		min-height: 170px;
+		background-color: #3498db;
+
+		.feedback-comments-all-msgs-item {
+			display: grid;
+			grid-template-columns: 100px 1fr;
+			gap: 30px;
+			padding: 30px 10px;
+			border-bottom: 2px solid black;
+
+			.profile-img {
+				border: 2px solid black;
+				border-radius: 50%;
+				height: 100px;
 			}
 
-			.feedbacks-item-main {
-				margin-left: 40px;
-				width: 80%;
+			.message-container {
+				display: grid;
+				grid-template-rows: 30px 1fr ;
+				align-items: center;
 
-				.feedbacks-item-main-title {
-					font-size: larger;
-					font-weight: 700;
-					padding-bottom: 10px;
-				}
+				.user-info {
+					display: grid;
+					grid-template-columns: 100px 1fr;
 
-				.feedbacks-item-main-desc {
-					padding-bottom: 15px;
-				}
+					.username {
+						font-size: larger;
+						font-weight: 700;
+						color: #751692;
+					}
 
-				.feedbacks-item-main-type {
-					display: inline-block;
-					background-color: #e1e4ef;
-					color: #3498db;
-					padding: 5px 15px;
-					border-radius: 10px;
-				}
-			}
-
-			.feedbacks-item-msg-count {
-				margin-left: auto;
-				align-self: center;
-				transition: all 0.2s ease-in-out;
-
-				& > * {
-					text-decoration: none;
-					color:#3498db;
+					.replay {
+						margin-left: auto;
+					}
 				}
 				
-				&:hover {
-					transform: scale(1.2);
-					cursor: pointer;
+				.message-text {
+					
 				}
 			}
 		}
