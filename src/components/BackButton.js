@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 
-function BackButton() {
+function BackButton({ to }) {
 
     return (
-        
-           <Link to='/products'>Go Back</Link>
-        
+        <div className='go-back-button'>
+           <Link to={to}><i className="arrow-left"></i> Go Back</Link>
+        </div>
     )
 }
 

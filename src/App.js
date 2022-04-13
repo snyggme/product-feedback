@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Products from "./components/Products";
 import Feedbacks from "./components/Feedbacks";
+import Comments from "./components/Comments";
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 				<Route path='/' element={<Home setModal={setModal}/>} />
 				<Route path='/products' element={<Products />} />
 				<Route path='/products/:productId' element={<Feedbacks />} />
+				<Route path='/products/:productId/comments/:commentsId' element={<Comments />} />
 				<Route
 					path="*"
 					element={
