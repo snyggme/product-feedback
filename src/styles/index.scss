@@ -110,6 +110,15 @@ body {
 	-webkit-transform: rotate(-135deg);
 }
 
+.arrow-down {
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	display: inline-block;
+	padding: 3px;
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}
+
 button.btn-black {
 	color: white;
 	background-color: black;
@@ -335,6 +344,7 @@ button.btn-black {
 		padding: 10px 100px;
 
 		.feedbacks-items-title {
+			height: 75px;
 			color: white;
 			background-color: #2c2541;
 			padding: 15px 35px;
@@ -353,6 +363,33 @@ button.btn-black {
 				margin-left: 50px;
 				font-size: small;
 				color: gray;
+
+				.sortby-list-arrow {
+					cursor: pointer;
+					color: white;
+					position: relative;
+
+					ul.sortby-list {
+						position: absolute;
+						width: 150px;
+						list-style: none;
+						color: gray;
+						background-color: whitesmoke;
+						text-decoration: none;
+						padding: 10px 0px;
+						left: -20px;
+						top: 25px;
+
+						li {
+							padding: 10px 20px;
+
+							&:hover {
+								color: white;
+								background-color: #3498db;
+							}
+						}
+					}
+				}
 			}
 
 			.feedbacks-items-title-add-btn {
@@ -386,6 +423,7 @@ button.btn-black {
 			
 			.feedbacks-item-upvotes > div {
 				font-size: smaller;
+				width: 40px;
 				background-color: #e1e4ef;
 				box-shadow: 3px 3px 0px 0px #171e27;
 				padding: 8px 8px;

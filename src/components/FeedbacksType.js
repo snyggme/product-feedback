@@ -1,9 +1,21 @@
 
-function FeedbacksType() {
+function FeedbacksType({ active, setActive }) {
+
+    const handleClick = (e) => {
+        setActive(e.target.innerText);
+	} 
     
     return (
         <div className='choose-feedback-type'>
-            {feedbackTypes.map(type => <div key={type} className={`choose-feedback-type-item ${type === 'All' ? 'active' : ''}`}>{type}</div>)}
+            {feedbackTypes.map(type => 
+                <div 
+                    key={type} 
+                    className={`choose-feedback-type-item ${type.toLocaleLowerCase() === active.toLowerCase() ? 'active' : ''}`} 
+                    onClick={handleClick}
+                >
+                    {type}
+                </div>
+            )}
         </div>
     )
 }
