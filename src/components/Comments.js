@@ -2,6 +2,7 @@ import { getProducts } from '../utils/products';
 import { useParams } from "react-router-dom";
 import BackButton from "./BackButton";
 import FeedbackItem from "./FeedbackItem";
+import CommentsItem from "./CommentsItem";
 
 function Comments() {
     let params = useParams();
@@ -14,22 +15,11 @@ function Comments() {
                 <BackButton to={`/products/${params.productId}`} />
                 <button>Add feedback</button>
             </div>
-            <div className='feedback-comments-current-feedback'><FeedbackItem {...feedback} productId={params.productId} /></div>
+            <div className='feedback-comments-current-feedback'>
+                <FeedbackItem {...feedback} productId={params.productId} />
+            </div>
             <div className='feedback-comments-all-msgs'>
-                {feedback.comments.map(comment => 
-                    <div key={comment.username} className='feedback-comments-all-msgs-item'>
-                        <div className='profile-img'>
-                            
-                        </div>
-                        <div className='message-container'>
-                            <div className='user-info'>
-                                <div className='username'>{comment.username}</div>
-                                <div className='replay'>Replay</div>
-                            </div>
-                            <div className='message-text'>{comment.text}</div>
-                        </div>
-                    </div>
-                )}
+                {feedback.comments.map((comment, i) => <CommentsItem key={i} {...comment}/>)}
             </div>
             <div className='feedback-comments-add-comment'>ADD COMMENT</div>
         </div>
