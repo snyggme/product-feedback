@@ -469,6 +469,7 @@ div.go-back-button {
 	}
 
 	.feedbacks-item-msg-count {
+		width: 60px;
 		margin-left: auto;
 		align-self: center;
 		transition: all 0.2s ease-in-out;
@@ -547,16 +548,76 @@ div.go-back-button {
 					.username {
 						font-size: larger;
 						font-weight: 700;
-						color: #2c2541;
+						color: rgb(255, 212, 131);
 					}
 
 					.replay {
 						margin-left: auto;
+						cursor: pointer;
+
+						&:hover {
+							color: black;
+						}
 					}
 				}
 				
-				.message-text {
+				// .message-text {
 					
+				// }
+			}
+		}
+	}
+
+	.feedback-comments-add-comment {
+		border: 2px solid black;
+		padding: 30px 50px;
+		margin-bottom: 50px;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 30px;
+
+		span {
+			font-size: larger;
+			font-weight: 700;
+			color: #751692;
+		}
+
+		textarea {
+			min-height: 155px;
+			padding: 20px 25px;
+			resize: none;
+			border: 2px solid black;
+			border-radius: 5px;
+			box-shadow: 5px 10px 15px 0px rgba(0,0,0,0.1);
+
+			&:hover {
+				border-color:#7864ED;
+			}
+
+			&:focus {
+				outline-color: #751692;
+			}
+		}
+		
+		div {
+			display: flex;
+			align-items: center;
+
+			button {
+				margin-left: auto;
+				color: white;
+				background-color: #751692;
+				padding: 15px 25px;
+				border-radius: 10px;
+				text-decoration: none;
+				border: none;
+				font-weight: 700;
+				transition: all 200ms ease;
+			
+				&:active {
+					background-color: white;
+					color: black;
+					transform: translateY(4px);
 				}
 			}
 		}

@@ -1,27 +1,21 @@
 import { getProducts } from '../utils/products';
 import { useParams } from "react-router-dom";
-import BackButton from "./BackButton";
+import CommentTitle from './CommentTitle';
 import FeedbackItem from "./FeedbackItem";
-import CommentsItem from "./CommentsItem";
+import AddComment from "./AddComment";
+import CommentSection from './CommentSection';
 
 function Comments() {
-    let params = useParams();
-    const product = getProducts(params.productId);
-    const feedback = product.feedbacks.find(item => item.id === Number(params.commentsId));
-
+    let { productId, commentsId } = useParams();
+    const product = getProducts(productId);
+    const feedback = product.feedbacks.find(item => item.id === Number(commentsId));
+    
     return (
         <div className='feedback-comments-container'>
-            <div className='feedback-comments-edit-panel'>
-                <BackButton to={`/products/${params.productId}`} />
-                <button>Add feedback</button>
-            </div>
-            <div className='feedback-comments-current-feedback'>
-                <FeedbackItem {...feedback} productId={params.productId} />
-            </div>
-            <div className='feedback-comments-all-msgs'>
-                {feedback.comments.map((comment, i) => <CommentsItem key={i} {...comment}/>)}
-            </div>
-            <div className='feedback-comments-add-comment'>ADD COMMENT</div>
+            <CommentTitle productId={productId} />
+            <FeedbackItem {...feedback} productId={productId} />
+            <CommentSection comments={feedback.comments} />
+            <AddComment productId={productId} commentsId={commentsId}/>
         </div>
     )
 }

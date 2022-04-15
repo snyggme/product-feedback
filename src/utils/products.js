@@ -582,3 +582,24 @@ export function getProducts(name = '') {
 
     return products.find(product => product.name.toLowerCase() === name.toLowerCase());
 }
+
+export function addFeedbackComment(productName, comment, commentsId, username = 'alice') {
+    let productNameIndex;
+    let feedbacksIndex;
+
+    for (let i = 0; i < products.length; i++) {
+        if (products[i].name.toLowerCase() === productName.toLowerCase()) {
+            productNameIndex = i;
+            break;
+        }
+    }
+
+    for (let i = 0; i < products[productNameIndex].feedbacks.length; i++) {
+        if (products[productNameIndex].feedbacks[i].id === Number(commentsId)) {
+            feedbacksIndex = i;
+            break;
+        }
+    }
+
+    products[productNameIndex].feedbacks[feedbacksIndex].comments.push({ username, text: comment })
+}
