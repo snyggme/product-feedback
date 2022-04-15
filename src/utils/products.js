@@ -227,7 +227,18 @@ const products = [
                             {
                                 username: 'alice',
                                 text: 'nested comment',
-                                childs: [] 
+                                childs: [
+                                    {
+                                        username: 'clara',
+                                        text: 'nested clara comment',
+                                        childs: [] 
+                                    },
+                                    {
+                                        username: 'derel',
+                                        text: 'nested derel comment',
+                                        childs: [] 
+                                    }
+                                ] 
                             },
                             {
                                 username: 'jhon',
