@@ -1,23 +1,27 @@
 import CommentsItem from "./CommentsItem";
 
 function CommentSection({ comments }) {
-    let arr = [];
+    const flatComments = (c) => {
+        let arr = [];
 
-    const flatComments = ({ username, text, childs }, width) => {
-        arr.push({username, text, width});
-
-        if (childs.length > 0) {
-            childs.map(child => flatComments(child, width - 13))
+        const setWidth = ({ username, text, childs }, width) => {
+            arr.push({ username, text, width });
+    
+            if (childs.length > 0) {
+                childs.map(child => setWidth(child, width - 13))
+            }
         }
+
+        c.map(comment => setWidth(comment, 100))
+
+        return arr;
     }
 
-    comments.map(comment => flatComments(comment, 100))
-
-    // flatComments({ username, text, childs }, 100)
-    console.log(arr);
+    const flattenComments = flatComments(comments);
+    
     return (
         <div className='feedback-comments-all-msgs'>
-            {arr.map((comment, i) => <CommentsItem key={i} {...comment} />)}
+            {flattenComments.map((comment, i) => <CommentsItem key={i} {...comment} />)}
         </div>
     )
 }

@@ -525,10 +525,11 @@ div.go-back-button {
 
 		.feedback-comments-all-msgs-item {
 			display: grid;
-			grid-template-columns: 100px 1fr;
+			// grid-template-columns: 100px 1fr;
+			grid-template-columns:  100px minmax(100px, 1fr);
+			grid-template-rows: auto;
 			gap: 30px;
 			padding: 30px 10px;
-			// border-bottom: 2px solid black;
 			
 
 			.profile-img {
@@ -539,7 +540,6 @@ div.go-back-button {
 
 			.message-container {
 				display: grid;
-				grid-template-rows: 30px 1fr ;
 				align-items: center;
 
 				.user-info {
@@ -562,9 +562,9 @@ div.go-back-button {
 					}
 				}
 				
-				// .message-text {
-					
-				// }
+				.message-text {
+					// overflow: auto ;
+				}
 			}
 		}
 	}
