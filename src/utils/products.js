@@ -11,26 +11,31 @@ const products = [
                 type: 'feature',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 4,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 5,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -45,16 +50,19 @@ const products = [
                 type: 'Enhancement',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -69,21 +77,25 @@ const products = [
                 type: 'Bug',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 4,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -98,15 +110,44 @@ const products = [
                 type: 'feature',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: [
                             {
+                                id: 3,
                                 username: 'alice',
                                 text: 'nested comment',
-                                childs: [] 
+                                childs: [
+                                    {
+                                        id: 5,
+                                        username: 'clara',
+                                        text: 'nested clara comment',
+                                        childs: [] 
+                                    },
+                                    {
+                                        id: 6,
+                                        username: 'derel',
+                                        text: 'nested derel comment',
+                                        childs: [
+                                            {
+                                                id: 7,
+                                                username: 'sally',
+                                                text: 'nested sally commentssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
+                                                childs: [] 
+                                            },
+                                            {
+                                                id: 8,
+                                                username: 'jim',
+                                                text: 'nested jim comment',
+                                                childs: [] 
+                                            }
+                                        ] 
+                                    }
+                                ] 
                             },
                             {
+                                id: 4,
                                 username: 'jhon',
                                 text: 'nested comment',
                                 childs: [] 
@@ -114,6 +155,7 @@ const products = [
                         ]
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -134,26 +176,31 @@ const products = [
                 type: 'feature',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 4,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 5,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -168,16 +215,19 @@ const products = [
                 type: 'Enhancement',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -192,21 +242,25 @@ const products = [
                 type: 'Bug',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 4,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -221,28 +275,34 @@ const products = [
                 type: 'feature',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: [
                             {
+                                id: 3,
                                 username: 'alice',
                                 text: 'nested comment',
                                 childs: [
                                     {
+                                        id: 5,
                                         username: 'clara',
                                         text: 'nested clara comment',
                                         childs: [] 
                                     },
                                     {
+                                        id: 6,
                                         username: 'derel',
                                         text: 'nested derel comment',
                                         childs: [
                                             {
+                                                id: 7,
                                                 username: 'sally',
                                                 text: 'nested sally commentssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
                                                 childs: [] 
                                             },
                                             {
+                                                id: 8,
                                                 username: 'jim',
                                                 text: 'nested jim comment',
                                                 childs: [] 
@@ -252,6 +312,7 @@ const products = [
                                 ] 
                             },
                             {
+                                id: 4,
                                 username: 'jhon',
                                 text: 'nested comment',
                                 childs: [] 
@@ -259,6 +320,7 @@ const products = [
                         ]
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -279,26 +341,31 @@ const products = [
                 type: 'feature',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 4,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 5,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -313,16 +380,19 @@ const products = [
                 type: 'Enhancement',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -337,21 +407,25 @@ const products = [
                 type: 'Bug',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 4,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -366,15 +440,44 @@ const products = [
                 type: 'feature',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: [
                             {
+                                id: 3,
                                 username: 'alice',
                                 text: 'nested comment',
-                                childs: [] 
+                                childs: [
+                                    {
+                                        id: 5,
+                                        username: 'clara',
+                                        text: 'nested clara comment',
+                                        childs: [] 
+                                    },
+                                    {
+                                        id: 6,
+                                        username: 'derel',
+                                        text: 'nested derel comment',
+                                        childs: [
+                                            {
+                                                id: 7,
+                                                username: 'sally',
+                                                text: 'nested sally commentssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
+                                                childs: [] 
+                                            },
+                                            {
+                                                id: 8,
+                                                username: 'jim',
+                                                text: 'nested jim comment',
+                                                childs: [] 
+                                            }
+                                        ] 
+                                    }
+                                ] 
                             },
                             {
+                                id: 4,
                                 username: 'jhon',
                                 text: 'nested comment',
                                 childs: [] 
@@ -382,6 +485,7 @@ const products = [
                         ]
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -402,26 +506,31 @@ const products = [
                 type: 'feature',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 4,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 5,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -436,16 +545,19 @@ const products = [
                 type: 'Enhancement',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -460,21 +572,25 @@ const products = [
                 type: 'Bug',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 4,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -489,15 +605,44 @@ const products = [
                 type: 'feature',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: [
                             {
+                                id: 3,
                                 username: 'alice',
                                 text: 'nested comment',
-                                childs: [] 
+                                childs: [
+                                    {
+                                        id: 5,
+                                        username: 'clara',
+                                        text: 'nested clara comment',
+                                        childs: [] 
+                                    },
+                                    {
+                                        id: 6,
+                                        username: 'derel',
+                                        text: 'nested derel comment',
+                                        childs: [
+                                            {
+                                                id: 7,
+                                                username: 'sally',
+                                                text: 'nested sally commentssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
+                                                childs: [] 
+                                            },
+                                            {
+                                                id: 8,
+                                                username: 'jim',
+                                                text: 'nested jim comment',
+                                                childs: [] 
+                                            }
+                                        ] 
+                                    }
+                                ] 
                             },
                             {
+                                id: 4,
                                 username: 'jhon',
                                 text: 'nested comment',
                                 childs: [] 
@@ -505,6 +650,7 @@ const products = [
                         ]
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -525,26 +671,31 @@ const products = [
                 type: 'feature',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 4,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 5,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -559,16 +710,19 @@ const products = [
                 type: 'Enhancement',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -583,21 +737,25 @@ const products = [
                 type: 'Bug',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 3,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
                     },
                     {
+                        id: 4,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -612,15 +770,44 @@ const products = [
                 type: 'feature',
                 comments: [
                     {
+                        id: 1,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: [
                             {
+                                id: 3,
                                 username: 'alice',
                                 text: 'nested comment',
-                                childs: [] 
+                                childs: [
+                                    {
+                                        id: 5,
+                                        username: 'clara',
+                                        text: 'nested clara comment',
+                                        childs: [] 
+                                    },
+                                    {
+                                        id: 6,
+                                        username: 'derel',
+                                        text: 'nested derel comment',
+                                        childs: [
+                                            {
+                                                id: 7,
+                                                username: 'sally',
+                                                text: 'nested sally commentssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
+                                                childs: [] 
+                                            },
+                                            {
+                                                id: 8,
+                                                username: 'jim',
+                                                text: 'nested jim comment',
+                                                childs: [] 
+                                            }
+                                        ] 
+                                    }
+                                ] 
                             },
                             {
+                                id: 4,
                                 username: 'jhon',
                                 text: 'nested comment',
                                 childs: [] 
@@ -628,6 +815,7 @@ const products = [
                         ]
                     },
                     {
+                        id: 2,
                         username: 'bob',
                         text: 'uuuuu doing comments',
                         childs: []
@@ -645,7 +833,7 @@ export function getProducts(name = '') {
     return products.find(product => product.name.toLowerCase() === name.toLowerCase());
 }
 
-export function addFeedbackComment(productName, comment, commentsId, username = 'jimbo') {
+export function addFeedbackComment(productName, comment, commentsId, username = 'jimbo', messageId) {
     let productNameIndex;
     let feedbacksIndex;
 
@@ -663,5 +851,44 @@ export function addFeedbackComment(productName, comment, commentsId, username = 
         }
     }
 
-    products[productNameIndex].feedbacks[feedbacksIndex].comments.push({ username, text: comment, childs: [] })
+    // products[productNameIndex].feedbacks[feedbacksIndex].comments.push({ username, text: comment, childs: [] })
+    let where = [];
+    let newComments = [];
+
+    const f = (arr, depth) => {
+        arr.map((item, i) => {
+            if (item.id === messageId) {
+                where.push({ index: i, depth, here: true })
+            } else if (item.childs.length > 0) {
+                where.push({ index: i, depth, here: false })
+                f(item.childs, ++depth)
+            }
+        })
+    }
+
+    f(products[productNameIndex].feedbacks[feedbacksIndex].comments, 0)
+    console.log(where)
+    // f(products[productNameIndex].feedbacks[feedbacksIndex].comments)
+    // console.log(newComments)
+    // products[productNameIndex].feedbacks[feedbacksIndex].comments = [...newComments];
+    // for (let i = 0; i < products[productNameIndex].feedbacks[feedbacksIndex].comments.length; i++) {
+
+    // }
+
+    // console.log(products[productNameIndex].feedbacks[feedbacksIndex].comments)
+}
+
+export function calculateLength(arr) {
+    let len = 0;
+
+    const calculate = (arr) => {
+        arr.forEach(element => {
+            len++;
+            if (element.childs.length > 0) calculate(element.childs)
+        });
+    } 
+
+    calculate(arr);
+
+    return len;
 }

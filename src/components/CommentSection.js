@@ -9,10 +9,10 @@ function CommentSection({ comments }) {
         const flatComments = (c) => {
             let arr = [];
     
-            const setWidth = ({ username, text, childs }, width) => {
+            const setWidth = ({ username, text, childs, id }, width) => {
                 if (width < 35) width = 35;
     
-                arr.push({ username, text, width });
+                arr.push({ username, text, width, id });
         
                 if (childs.length > 0) childs.map(child => setWidth(child, width - 13))
             }

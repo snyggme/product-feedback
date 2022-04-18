@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 // TODO
 // Add replay post with correct width so replay will nested
 
-function AddReplayComment({ username, setReplayKey }) {
+function AddReplayComment({ id, username, setReplayKey }) {
     const { productId, commentsId } = useParams();
 
     const [text, setText] = useState(`@${username}, `);
@@ -17,10 +17,10 @@ function AddReplayComment({ username, setReplayKey }) {
     }
 
     const handlePost = () => {
-        if (text.length !== 0) {
+        if (text.length !== 0 && text.trimEnd() !== `@${username},`) {
             setText('');
             setReplayKey(-1);
-            addFeedbackComment(productId, text, commentsId);
+            addFeedbackComment(productId, text, commentsId, 'jimbo', id);
         }
     }
 

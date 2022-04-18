@@ -1,19 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { calculateLength } from '../utils/products';
 
 function FeedbackItem({ id, title, votes, comments, type, description, productId }) {
-    let len = 0;
-
-    const calculateLength = (arr) => {
-        arr.forEach(element => {
-            len++;
-            console.log(len)
-            if (element.childs.length > 0) calculateLength(element.childs)
-        });
-    } 
-
-    calculateLength(comments);
+    const len = calculateLength(comments);
 
     return (
         <div className='feedbacks-item'>

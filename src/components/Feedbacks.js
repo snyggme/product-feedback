@@ -4,10 +4,7 @@ import BackButton from "./BackButton";
 import FeedbacksTitle from "./FeedbacksTitle";
 import FeedbackItem from "./FeedbackItem";
 import FeedbacksType from "./FeedbacksType";
-import { getProducts } from '../utils/products';
-
-// TODO
-// Fix feedback filter: Most Comments
+import { getProducts, calculateLength } from '../utils/products';
 
 function Feedbacks() {
     const [ activeFeedbacks, setActiveFeedbacks ] = useState('all');
@@ -28,11 +25,11 @@ function Feedbacks() {
             case 'Most Upvotes':
                 return b.votes - a.votes;
             case 'Most Comments':
-                return b.comments.length - a.comments.length;
+                return calculateLength(b.comments) - calculateLength(a.comments);
             case 'Least Upvotes':
                 return a.votes - b.votes;
             case 'Least Comments':
-                return a.comments.length - b.comments.length;
+                return calculateLength(a.comments) - calculateLength(b.comments);
             default:
                 return 0;
         }
