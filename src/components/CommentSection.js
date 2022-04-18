@@ -1,27 +1,53 @@
+import { useState, useEffect } from 'react';
 import CommentsItem from "./CommentsItem";
 
 function CommentSection({ comments }) {
-    const flatComments = (c) => {
-        let arr = [];
+    const [flattenComments, setFlattenComments] = useState([]);
+    const [replayKey, setReplayKey] = useState(-1);
 
-        const setWidth = ({ username, text, childs }, width) => {
-            arr.push({ username, text, width });
+    useEffect(() => {
+        const flatComments = (c) => {
+            let arr = [];
     
-            if (childs.length > 0) {
-                childs.map(child => setWidth(child, width - 13))
+            const setWidth = ({ username, text, childs }, width) => {
+                if (width < 35) width = 35;
+    
+                arr.push({ username, text, width });
+        
+                if (childs.length > 0) childs.map(child => setWidth(child, width - 13))
             }
+    
+            c.map(comment => setWidth(comment, 100))
+    
+            return arr;
         }
 
-        c.map(comment => setWidth(comment, 100))
+        setFlattenComments(flatComments(comments))
+    }, [comments])
 
-        return arr;
+    const handleReplay = (username, width, key) => {
+        let index = 0;
+
+        flattenComments.forEach((comment, i) => {
+            if (comment.width === width - 13) index = i;
+        });
+        setReplayKey(key);
+        console.log('index', index)
+        console.log(flattenComments)
+        console.log('username', username)
+        console.log('width', width)
     }
-
-    const flattenComments = flatComments(comments);
     
     return (
         <div className='feedback-comments-all-msgs'>
-            {flattenComments.map((comment, i) => <CommentsItem key={i} {...comment} />)}
+            {flattenComments.map((comment, i) => 
+                <CommentsItem 
+                    key={i} 
+                    {...comment} 
+                    handleReplay={handleReplay} 
+                    showReplay={replayKey === i} 
+                    index={i}/>
+            )}
         </div>
     )
 }
