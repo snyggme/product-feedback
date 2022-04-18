@@ -31,11 +31,8 @@ function CommentSection({ comments }) {
         flattenComments.forEach((comment, i) => {
             if (comment.width === width - 13) index = i;
         });
+        
         setReplayKey(key);
-        console.log('index', index)
-        console.log(flattenComments)
-        console.log('username', username)
-        console.log('width', width)
     }
     
     return (
@@ -46,7 +43,8 @@ function CommentSection({ comments }) {
                     {...comment} 
                     handleReplay={handleReplay} 
                     showReplay={replayKey === i} 
-                    index={i}/>
+                    index={i}
+                    setReplayKey={setReplayKey} />
             )}
         </div>
     )

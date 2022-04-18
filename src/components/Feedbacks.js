@@ -6,6 +6,9 @@ import FeedbackItem from "./FeedbackItem";
 import FeedbacksType from "./FeedbacksType";
 import { getProducts } from '../utils/products';
 
+// TODO
+// Fix feedback filter: Most Comments
+
 function Feedbacks() {
     const [ activeFeedbacks, setActiveFeedbacks ] = useState('all');
     const [ feedbacksFilter, setFeedbacksFilter ] = useState('Most Upvotes');

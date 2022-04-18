@@ -1,7 +1,7 @@
 // import { useState } from 'react';
 import AddReplayComment from "./AddReplayComment";
 
-function CommentsItem({ username, text, width, handleReplay, index, showReplay }) {
+function CommentsItem({ username, text, width, handleReplay, index, showReplay, setReplayKey }) {
 
     const handleClick = (e) => {
         handleReplay(username, width, index)
@@ -19,7 +19,7 @@ function CommentsItem({ username, text, width, handleReplay, index, showReplay }
                     <div className='message-text'>{text}</div>
                 </div>   
             </div>
-            { showReplay && <AddReplayComment username={username} /> }
+            { showReplay && <AddReplayComment username={username} setReplayKey={setReplayKey} /> }
         </div>
   	);
 }

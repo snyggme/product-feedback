@@ -3,7 +3,18 @@ import { faCommentAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 function FeedbackItem({ id, title, votes, comments, type, description, productId }) {
-    
+    let len = 0;
+
+    const calculateLength = (arr) => {
+        arr.forEach(element => {
+            len++;
+            console.log(len)
+            if (element.childs.length > 0) calculateLength(element.childs)
+        });
+    } 
+
+    calculateLength(comments);
+
     return (
         <div className='feedbacks-item'>
             <div className='feedbacks-item-upvotes'>
@@ -18,7 +29,7 @@ function FeedbackItem({ id, title, votes, comments, type, description, productId
             </div>
             <div className='feedbacks-item-msg-count'>
                 <Link to={`/products/${productId}/comments/${id}`}>
-                    <FontAwesomeIcon icon={faCommentAlt} size='xl' style={{color: '#3498db'}} /> {comments.length}
+                    <FontAwesomeIcon icon={faCommentAlt} size='xl' style={{color: '#3498db'}} /> {len}
                 </Link>
             </div>
         </div>

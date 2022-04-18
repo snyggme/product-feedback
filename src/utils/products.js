@@ -645,7 +645,7 @@ export function getProducts(name = '') {
     return products.find(product => product.name.toLowerCase() === name.toLowerCase());
 }
 
-export function addFeedbackComment(productName, comment, commentsId, username = 'alice') {
+export function addFeedbackComment(productName, comment, commentsId, username = 'jimbo') {
     let productNameIndex;
     let feedbacksIndex;
 

@@ -6,7 +6,7 @@ import AddComment from "./AddComment";
 import CommentSection from './CommentSection';
 
 function Comments() {
-    let { productId, commentsId } = useParams();
+    const { productId, commentsId } = useParams();
     const product = getProducts(productId);
     const feedback = product.feedbacks.find(item => item.id === Number(commentsId));
     
