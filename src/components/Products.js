@@ -1,15 +1,40 @@
 import ProductItem from './ProductItem';
-import { getProducts } from '../utils/products';
+// import { getProducts } from '../utils/products';
+import { connect } from 'react-redux';
+import { catchProducts } from '../actions/ProductAction';
+import { useEffect } from 'react';
 
-function Products() {
-    const products = getProducts();
+function Products({ products: {items, isLoading}, catchProducts }) {
+
+    useEffect(() => {
+        catchProducts();
+    }, [])
+
+    if (isLoading)
+        return <div className='loading'/>
+
     return (
         <div className='products-container'>
             {
-                products.map(item => (<ProductItem {...item} key={item.name}/>))
+                items.map(item => (<ProductItem {...item} key={item.name}/>))
             }
         </div>
     )
 }
 
-export default Products;
+const mapStateToProps = store => {
+    return {
+        products: store.products,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        catchProducts: () => dispatch(catchProducts()),
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Products);

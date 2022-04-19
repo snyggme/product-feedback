@@ -833,7 +833,7 @@ export function getProducts(name = '') {
     return products.find(product => product.name.toLowerCase() === name.toLowerCase());
 }
 
-export function addFeedbackComment(productName, comment, commentsId, username = 'jimbo', messageId) {
+export function addFeedbackComment(productName, comment, commentsId, username = 'jimbo', messageId = -1) {
     let productNameIndex;
     let feedbacksIndex;
 
@@ -852,9 +852,13 @@ export function addFeedbackComment(productName, comment, commentsId, username = 
     }
 
     // TODO
-    // test ability to add comments for 0 level of nestedness: see component AddComment.js
-
-    // products[productNameIndex].feedbacks[feedbacksIndex].comments.push({ username, text: comment, childs: [] })
+    // make id unique
+    
+    if (messageId < 0) {
+        products[productNameIndex].feedbacks[feedbacksIndex].comments.push({ id: 99, username, text: comment, childs: [] })
+        return
+    }
+        
     const findPathToElement = (arr) => {
         let where = [];
 
@@ -876,12 +880,12 @@ export function addFeedbackComment(productName, comment, commentsId, username = 
 
         let filteredWhere = where.filter(item => {
             if (stopFilter) return false;
-
+            // filter everything after founded item
             if (item.here) stopFilter = true;
 
             return true;
         })
-        // delete empty branches so in array "where" will be the correct path to desired element 
+        // delete empty branches so in array "filteredWhere" will be correct path to desired element 
         while(filteredWhere.length > 2 && filteredWhere[filteredWhere.length - 1].depth <= filteredWhere[filteredWhere.length - 2].depth) {
             filteredWhere.splice(filteredWhere.length - 2, 1)
         }
@@ -895,24 +899,24 @@ export function addFeedbackComment(productName, comment, commentsId, username = 
     // TODO
     // make id unique
 
-    const f = (arr, path) => {
+    const addComment = (arr, path) => {
         if (path[path.length - 1].depth === 0) {
             arr[path[path.length - 1].index].childs.push({ id: 99, username, text: comment, childs: [] })
             return
         }
 
-        const g = (arr, path) => {
+        const pushComment = (arr, path) => {
             if (path.length > 1)
-                g(arr[path[0].index].childs, path.slice(1))
+                pushComment(arr[path[0].index].childs, path.slice(1))
             else    
                 arr[path[0].index].childs.push({ id: 99, username, text: comment, childs: [] })
         }
         
-        g(arr[path[0].index].childs, path.slice(1))
+        pushComment(arr[path[0].index].childs, path.slice(1))
 
     }
 
-    f(products[productNameIndex].feedbacks[feedbacksIndex].comments, path)
+    addComment(products[productNameIndex].feedbacks[feedbacksIndex].comments, path)
 }
 
 export function calculateLength(arr) {
