@@ -851,31 +851,68 @@ export function addFeedbackComment(productName, comment, commentsId, username = 
         }
     }
 
-    // products[productNameIndex].feedbacks[feedbacksIndex].comments.push({ username, text: comment, childs: [] })
-    let where = [];
-    let newComments = [];
+    // TODO
+    // test ability to add comments for 0 level of nestedness: see component AddComment.js
 
-    const f = (arr, depth) => {
-        arr.map((item, i) => {
-            if (item.id === messageId) {
-                where.push({ index: i, depth, here: true })
-            } else if (item.childs.length > 0) {
-                where.push({ index: i, depth, here: false })
-                f(item.childs, ++depth)
-            }
+    // products[productNameIndex].feedbacks[feedbacksIndex].comments.push({ username, text: comment, childs: [] })
+    const findPathToElement = (arr) => {
+        let where = [];
+
+        const f = (arr, depth) => {
+            arr.map((item, i) => {
+                if (item.id === messageId) {
+                    where.push({ index: i, depth, here: true })
+                } else if (item.childs.length > 0) {
+                    where.push({ index: i, depth, here: false })
+                    f(item.childs, ++depth)
+                    depth--;
+                }
+            })
+        }
+
+        f(arr, 0)
+
+        let stopFilter = false;
+
+        let filteredWhere = where.filter(item => {
+            if (stopFilter) return false;
+
+            if (item.here) stopFilter = true;
+
+            return true;
         })
+        // delete empty branches so in array "where" will be the correct path to desired element 
+        while(filteredWhere.length > 2 && filteredWhere[filteredWhere.length - 1].depth <= filteredWhere[filteredWhere.length - 2].depth) {
+            filteredWhere.splice(filteredWhere.length - 2, 1)
+        }
+
+        return filteredWhere;
+    }
+    // with path variable we can find any nested comment to travers to it
+    // path = [{ index0, depth0 }, {index1, depth1}, ...]
+    const path = findPathToElement(products[productNameIndex].feedbacks[feedbacksIndex].comments)
+
+    // TODO
+    // make id unique
+
+    const f = (arr, path) => {
+        if (path[path.length - 1].depth === 0) {
+            arr[path[path.length - 1].index].childs.push({ id: 99, username, text: comment, childs: [] })
+            return
+        }
+
+        const g = (arr, path) => {
+            if (path.length > 1)
+                g(arr[path[0].index].childs, path.slice(1))
+            else    
+                arr[path[0].index].childs.push({ id: 99, username, text: comment, childs: [] })
+        }
+        
+        g(arr[path[0].index].childs, path.slice(1))
+
     }
 
-    f(products[productNameIndex].feedbacks[feedbacksIndex].comments, 0)
-    console.log(where)
-    // f(products[productNameIndex].feedbacks[feedbacksIndex].comments)
-    // console.log(newComments)
-    // products[productNameIndex].feedbacks[feedbacksIndex].comments = [...newComments];
-    // for (let i = 0; i < products[productNameIndex].feedbacks[feedbacksIndex].comments.length; i++) {
-
-    // }
-
-    // console.log(products[productNameIndex].feedbacks[feedbacksIndex].comments)
+    f(products[productNameIndex].feedbacks[feedbacksIndex].comments, path)
 }
 
 export function calculateLength(arr) {
