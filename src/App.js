@@ -2,9 +2,8 @@ import { useState} from 'react';
 import Modal from './components/Modal';
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import Products from "./components/Products";
-import Feedbacks from "./components/Feedbacks";
 import Comments from "./components/Comments";
+import ProductsContainer from "./containers/ProductsContainer";
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -26,14 +25,13 @@ function App() {
 			{ modal.show && <Modal type={modal.type} setModal={setModal}/> }
 			<Routes>
 				<Route path='/' element={<Home setModal={setModal}/>} />
-				<Route path='/products' element={<Products />} />
-				<Route path='/products/:productId' element={<Feedbacks />} />
+				<Route path='/products/*' element={<ProductsContainer />} />
 				<Route path='/products/:productId/comments/:commentsId' element={<Comments />} />
 				<Route
 					path="*"
 					element={
 						<main style={{ padding: "1rem" }}>
-						<p>There's nothing here!</p>
+							<p>There's nothing here!</p>
 						</main>
 					}
 				/>
