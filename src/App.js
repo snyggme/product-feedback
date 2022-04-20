@@ -26,7 +26,7 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Home setModal={setModal}/>} />
 				<Route path='/products/*' element={<ProductsContainer />} />
-				<Route path='/products/:productId/comments/:commentsId' element={<Comments />} />
+				
 				<Route
 					path="*"
 					element={

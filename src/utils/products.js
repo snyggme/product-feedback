@@ -933,3 +933,6 @@ export function calculateLength(arr) {
 
     return len;
 }
+
+export const getProduct = (products, name) => 
+    products.find(product => product.name.toLowerCase() === name.toLowerCase())

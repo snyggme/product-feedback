@@ -5,19 +5,22 @@ import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { catchProducts } from '../actions/ProductAction';
-
-function ProductsContainer({ products: {items, isLoading}, catchProducts }) {
+// { products: {items, isLoading}, catchProducts }
+function ProductsContainer(props) {
     useEffect(() => {
-        catchProducts();
+        props.catchProducts();
     }, [])
+
+    const { isLoading } = props.products;
 
     if (isLoading)
         return <div className='loading'/>
-
+        
     return (
         <Routes>
-            <Route path='/' element={<Products products={items}/>} />
-            <Route path=':productId' element={<Feedbacks {...items} />} />
+            <Route path='/' element={<Products {...props} />} />
+            <Route path=':productId' element={<Feedbacks {...props} />} />
+            <Route path=':productId/comments/:commentsId' element={<Comments {...props} />} />
             <Route
                 path="*"
                 element={

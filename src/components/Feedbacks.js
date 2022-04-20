@@ -4,16 +4,15 @@ import BackButton from "./BackButton";
 import FeedbacksTitle from "./FeedbacksTitle";
 import FeedbackItem from "./FeedbackItem";
 import FeedbacksType from "./FeedbacksType";
-import { getProducts, calculateLength } from '../utils/products';
+import { getProduct, calculateLength } from '../utils/products';
 
-function Feedbacks() {
+function Feedbacks({ products: { items } }) {
     const [ activeFeedbacks, setActiveFeedbacks ] = useState('all');
     const [ feedbacksFilter, setFeedbacksFilter ] = useState('Most Upvotes');
 
-    let params = useParams();
-    const product = getProducts(params.productId);
-
-    let feedbacks = product.feedbacks
+    const { productId } = useParams();
+    const product = getProduct(items, productId);
+    const feedbacks = product.feedbacks
     .filter(f => {
         if (activeFeedbacks.toLocaleLowerCase() === 'all')
             return true;
@@ -43,7 +42,7 @@ function Feedbacks() {
             </aside>
             <section className="feedbacks-items-container">
                 <FeedbacksTitle titleNumber={product.feedbacks.length} setFilter={setFeedbacksFilter} activeFilter={feedbacksFilter}/>
-                {feedbacks.map(feedback => <FeedbackItem key={feedback.title} {...feedback} productId={params.productId} />)}
+                {feedbacks.map(feedback => <FeedbackItem key={feedback.title} {...feedback} productId={productId} />)}
             </section>
         </div>
     )
