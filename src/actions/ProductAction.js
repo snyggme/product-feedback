@@ -5,7 +5,7 @@ import {
 	httpDeleteFeed,
 	cachedFeeds 
 } from '../utils/network';
-import { getProducts } from '../utils/products';
+import { getProducts, getFilteredItems } from '../utils/products';
 
 export const GET_PRODUCTS_REQUEST = 'GET_PRODUCTS_REQUEST';
 export const GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS';
@@ -18,6 +18,10 @@ export const POST_PRODUCT_FAIL = 'POST_PRODUCT_FAIL';
 export const PUT_PRODUCT_REQUEST = 'PUT_PRODUCT_REQUEST';
 export const PUT_PRODUCT_SUCCESS = 'PUT_PRODUCT_SUCCESS';
 export const PUT_PRODUCT_FAIL = 'PUT_PRODUCT_FAIL';
+
+export const GET_FILTERED_FEEDBACKS = 'GET_FILTERED_FEEDBACKS';
+export const SET_FILTER_FOR_FEEDBACKS = 'SET_FILTER_FOR_FEEDBACKS';
+export const SET_ACTIVE_FEEDBACKS = 'SET_ACTIVE_FEEDBACKS';
 
 export const catchProducts = () => {
 	return dispatch => {
@@ -38,6 +42,33 @@ export const catchProducts = () => {
 				})
 			}
 		} 
+	}
+}
+
+export const getFilteredFeedbacks = (products, productId, activeType, filter) => {
+	return dispatch => {
+		dispatch({
+			type: GET_FILTERED_FEEDBACKS,
+			payload: getFilteredItems(products, productId, activeType, filter)
+		})
+	}
+}
+
+export const setFeedbacksFilter = (filter) => {
+	return dispatch => {
+		dispatch({
+			type: SET_FILTER_FOR_FEEDBACKS,
+			payload: filter
+		})
+	}
+}
+
+export const setActiveFeedbacks = (activeType) => {
+	return dispatch => {
+		dispatch({
+			type: SET_ACTIVE_FEEDBACKS,
+			payload: activeType
+		})
 	}
 }
 

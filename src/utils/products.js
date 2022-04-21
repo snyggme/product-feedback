@@ -936,3 +936,30 @@ export function calculateLength(arr) {
 
 export const getProduct = (products, name) => 
     products.find(product => product.name.toLowerCase() === name.toLowerCase())
+
+export const getFilteredItems = (products, productId, activeType, filter) => {
+    const product = getProduct(products, productId);
+    const feedbacks = product.feedbacks
+    .filter(f => {
+        if (activeType.toLocaleLowerCase() === 'all')
+            return true;
+        
+        return f.type.toLocaleLowerCase() === activeType.toLocaleLowerCase();
+    })
+    .sort((a, b) => {
+        switch (filter) {
+            case 'Most Upvotes':
+                return b.votes - a.votes;
+            case 'Most Comments':
+                return calculateLength(b.comments) - calculateLength(a.comments);
+            case 'Least Upvotes':
+                return a.votes - b.votes;
+            case 'Least Comments':
+                return calculateLength(a.comments) - calculateLength(b.comments);
+            default:
+                return 0;
+        }
+    });
+
+    return feedbacks;
+}

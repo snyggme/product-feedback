@@ -4,8 +4,13 @@ import Comments from "../components/Comments";
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { catchProducts } from '../actions/ProductAction';
-// { products: {items, isLoading}, catchProducts }
+import { 
+    catchProducts, 
+    setFeedbacksFilter, 
+    setActiveFeedbacks, 
+    getFilteredFeedbacks 
+} from '../actions/ProductAction';
+
 function ProductsContainer(props) {
     useEffect(() => {
         props.catchProducts();
@@ -36,13 +41,16 @@ function ProductsContainer(props) {
 
 const mapStateToProps = store => {
     return {
-        products: store.products,
+        products: store.products
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         catchProducts: () => dispatch(catchProducts()),
+        getFilteredFeedbacks: (products, productId, activeType, filter) => dispatch(getFilteredFeedbacks(products, productId, activeType, filter)),
+        setFeedbacksFilter: (filter) => dispatch(setFeedbacksFilter(filter)),
+        setActiveFeedbacks: (activeType) => dispatch(setActiveFeedbacks(activeType))
     }
 }
 

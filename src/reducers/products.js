@@ -8,16 +8,48 @@ import {
 	PUT_PRODUCT_REQUEST,
     PUT_PRODUCT_SUCCESS,
     PUT_PRODUCT_FAIL,
+	GET_FILTERED_FEEDBACKS,
+	SET_FILTER_FOR_FEEDBACKS,
+	SET_ACTIVE_FEEDBACKS
 } from '../actions/ProductAction';
 
 const initialState = {
 	items: [],
+	productFeedbacks: {
+		feedbacks: [],
+		activeType: 'all',
+		filter: 'Most Upvotes'
+	},
 	isLoading: true,
 	error: null
 };
 
 export const productsReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case SET_FILTER_FOR_FEEDBACKS: 
+		return {
+			...state,
+			productFeedbacks: {
+				...state.productFeedbacks,
+				filter: action.payload,
+			}
+		}
+		case SET_ACTIVE_FEEDBACKS: 
+			return {
+				...state,
+				productFeedbacks: {
+					...state.productFeedbacks,
+					activeType: action.payload,
+				}
+			}
+		case GET_FILTERED_FEEDBACKS: 
+			return {
+				...state,
+				productFeedbacks: {
+					...state.productFeedbacks,
+					feedbacks: [...action.payload],
+				}
+			}
 		case GET_PRODUCTS_REQUEST:
 			return {
 				...state,
@@ -25,6 +57,7 @@ export const productsReducer = (state = initialState, action) => {
 			}
 		case GET_PRODUCTS_SUCCESS:
 			return {
+				...state,
 				items: action.payload,
 				isLoading: false,
 				error: null

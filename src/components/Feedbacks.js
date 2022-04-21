@@ -1,47 +1,35 @@
 import { useParams } from "react-router-dom";
-import { useState} from 'react';
+import { useEffect } from 'react';
 import BackButton from "./BackButton";
 import FeedbacksTitle from "./FeedbacksTitle";
 import FeedbackItem from "./FeedbackItem";
 import FeedbacksType from "./FeedbacksType";
-import { getProduct, calculateLength } from '../utils/products';
+import { getProduct } from '../utils/products';
 
-function Feedbacks({ products: { items } }) {
-    const [ activeFeedbacks, setActiveFeedbacks ] = useState('all');
-    const [ feedbacksFilter, setFeedbacksFilter ] = useState('Most Upvotes');
-
+function Feedbacks(props) {
     const { productId } = useParams();
+
+    const { 
+        products: { items, productFeedbacks: { feedbacks, activeType, filter } }, 
+        getFilteredFeedbacks, 
+        setFeedbacksFilter, 
+        setActiveFeedbacks 
+    } = props;
+
+    useEffect(() => {
+        getFilteredFeedbacks(items, productId, activeType, filter)
+    }, [items, productId, activeType, filter]);
+    
     const product = getProduct(items, productId);
-    const feedbacks = product.feedbacks
-    .filter(f => {
-        if (activeFeedbacks.toLocaleLowerCase() === 'all')
-            return true;
-        
-        return f.type.toLocaleLowerCase() === activeFeedbacks.toLocaleLowerCase();
-    })
-    .sort((a, b) => {
-        switch (feedbacksFilter) {
-            case 'Most Upvotes':
-                return b.votes - a.votes;
-            case 'Most Comments':
-                return calculateLength(b.comments) - calculateLength(a.comments);
-            case 'Least Upvotes':
-                return a.votes - b.votes;
-            case 'Least Comments':
-                return calculateLength(a.comments) - calculateLength(b.comments);
-            default:
-                return 0;
-        }
-    });
 
     return (
         <div className='feedbacks-main'>
             <aside>
                 <BackButton to='/products' />
-                <FeedbacksType setActive={setActiveFeedbacks} active={activeFeedbacks}/>
+                <FeedbacksType setActive={setActiveFeedbacks} active={activeType}/>
             </aside>
             <section className="feedbacks-items-container">
-                <FeedbacksTitle titleNumber={product.feedbacks.length} setFilter={setFeedbacksFilter} activeFilter={feedbacksFilter}/>
+                <FeedbacksTitle titleNumber={product.feedbacks.length} setFilter={setFeedbacksFilter} activeFilter={filter}/>
                 {feedbacks.map(feedback => <FeedbackItem key={feedback.title} {...feedback} productId={productId} />)}
             </section>
         </div>
