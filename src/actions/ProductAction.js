@@ -5,7 +5,7 @@ import {
 	httpDeleteFeed,
 	cachedFeeds 
 } from '../utils/network';
-import { getProducts, getFilteredItems } from '../utils/products';
+import { getProducts } from '../utils/products';
 
 export const GET_PRODUCTS_REQUEST = 'GET_PRODUCTS_REQUEST';
 export const GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS';
@@ -44,34 +44,6 @@ export const catchProducts = () => {
 		} 
 	}
 }
-
-export const getFilteredFeedbacks = (products, productId, activeType, filter) => {
-	return dispatch => {
-		dispatch({
-			type: GET_FILTERED_FEEDBACKS,
-			payload: getFilteredItems(products, productId, activeType, filter)
-		})
-	}
-}
-
-export const setFeedbacksFilter = (filter) => {
-	return dispatch => {
-		dispatch({
-			type: SET_FILTER_FOR_FEEDBACKS,
-			payload: filter
-		})
-	}
-}
-
-export const setActiveFeedbacks = (activeType) => {
-	return dispatch => {
-		dispatch({
-			type: SET_ACTIVE_FEEDBACKS,
-			payload: activeType
-		})
-	}
-}
-
 
 // export const createFeed = (feed) => {
 // 	return async dispatch => {

@@ -1,29 +1,8 @@
 import { useState, useEffect } from 'react';
 import CommentsItem from "./CommentsItem";
 
-function CommentSection({ comments }) {
-    const [flattenComments, setFlattenComments] = useState([]);
+function CommentSection({ flattenComments }) {
     const [replayKey, setReplayKey] = useState(-1);
-
-    useEffect(() => {
-        const flatComments = (c) => {
-            let arr = [];
-    
-            const setWidth = ({ username, text, childs, id }, width) => {
-                if (width < 35) width = 35;
-    
-                arr.push({ username, text, width, id });
-        
-                if (childs.length > 0) childs.map(child => setWidth(child, width - 13))
-            }
-    
-            c.map(comment => setWidth(comment, 100))
-    
-            return arr;
-        }
-
-        setFlattenComments(flatComments(comments))
-    }, [comments])
 
     const handleReplay = (username, width, key) => {
         let index = 0;

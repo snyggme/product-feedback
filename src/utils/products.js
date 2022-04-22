@@ -920,6 +920,8 @@ export function addFeedbackComment(productName, comment, commentsId, username = 
 }
 
 export function calculateLength(arr) {
+    if (typeof arr === 'undefined') 
+        return 0;
     let len = 0;
 
     const calculate = (arr) => {
@@ -962,4 +964,20 @@ export const getFilteredItems = (products, productId, activeType, filter) => {
     });
 
     return feedbacks;
+}
+
+export const flatComments = (c) => {
+    let arr = [];
+
+    const setWidth = ({ username, text, childs, id }, width) => {
+        if (width < 35) width = 35;
+
+        arr.push({ username, text, width, id });
+
+        if (childs.length > 0) childs.map(child => setWidth(child, width - 13))
+    }
+
+    c.map(comment => setWidth(comment, 100))
+
+    return arr;
 }

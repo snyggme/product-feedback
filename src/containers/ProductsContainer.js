@@ -4,12 +4,13 @@ import Comments from "../components/Comments";
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { catchProducts } from "../actions/ProductAction";
 import { 
-    catchProducts, 
     setFeedbacksFilter, 
     setActiveFeedbacks, 
     getFilteredFeedbacks 
-} from '../actions/ProductAction';
+} from '../actions/FeedbackAction';
+import { getComments } from "../actions/CommentAction";
 
 function ProductsContainer(props) {
     useEffect(() => {
@@ -41,16 +42,19 @@ function ProductsContainer(props) {
 
 const mapStateToProps = store => {
     return {
-        products: store.products
+        products: store.products,
+        feedbacks: store.feedbacks,
+        comments: store.comments
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         catchProducts: () => dispatch(catchProducts()),
-        getFilteredFeedbacks: (products, productId, activeType, filter) => dispatch(getFilteredFeedbacks(products, productId, activeType, filter)),
+        getFilteredFeedbacks: (products, productId, active, filter) => dispatch(getFilteredFeedbacks(products, productId, active, filter)),
         setFeedbacksFilter: (filter) => dispatch(setFeedbacksFilter(filter)),
-        setActiveFeedbacks: (activeType) => dispatch(setActiveFeedbacks(activeType))
+        setActiveFeedbacks: (active) => dispatch(setActiveFeedbacks(active)),
+        getComments: (products, productId, commentsId) => dispatch(getComments(products, productId, commentsId))
     }
 }
 

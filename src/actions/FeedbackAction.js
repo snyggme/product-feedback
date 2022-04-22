@@ -1,4 +1,4 @@
-import { getProducts, getFilteredItems } from '../utils/products';
+import { getFilteredItems } from '../utils/products';
 
 export const GET_FILTERED_FEEDBACKS = 'GET_FILTERED_FEEDBACKS';
 export const SET_FILTER_FOR_FEEDBACKS = 'SET_FILTER_FOR_FEEDBACKS';

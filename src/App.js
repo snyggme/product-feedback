@@ -2,7 +2,6 @@ import { useState} from 'react';
 import Modal from './components/Modal';
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import Comments from "./components/Comments";
 import ProductsContainer from "./containers/ProductsContainer";
 import { Routes, Route } from 'react-router-dom';
 
@@ -26,7 +25,6 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Home setModal={setModal}/>} />
 				<Route path='/products/*' element={<ProductsContainer />} />
-				
 				<Route
 					path="*"
 					element={
