@@ -1,7 +1,9 @@
 import {
     POST_COMMENT,
-    GET_COMMENTS
+    GET_COMMENTS,
+    SET_REPLAY_KEY
 } from '../actions/CommentAction';
+import { flatComments } from '../utils/products';
 
 const initialState = {
     feedback: {},
@@ -12,10 +14,11 @@ const initialState = {
 
 export const commentsReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case POST_COMMENT:
+        case POST_COMMENT:
 			return {
 				...state,
-
+                items: action.payload,
+                flatten: flatComments(action.payload)
 			}
         case GET_COMMENTS:
             const { comments, feedback, flatten } = action.payload;
@@ -25,6 +28,11 @@ export const commentsReducer = (state = initialState, action) => {
                 items: comments,
                 flatten,
                 feedback
+            }
+        case SET_REPLAY_KEY:
+            return {
+                ...state,
+                replayKey: action.payload
             }
  		default:
 			return state;

@@ -1,11 +1,13 @@
 import { useState, useRef } from 'react';
-import { addFeedbackComment } from '../utils/products';
+// import { addFeedbackComment } from '../utils/products';
 import { useParams } from "react-router-dom";
+import { connect } from 'react-redux';
+import { 
+    setReplayKey, 
+    postComment 
+} from "../actions/CommentAction";
 
-// TODO
-// Add replay post with correct width so replay will nested
-
-function AddReplayComment({ id, username, setReplayKey }) {
+function AddReplayComment({ id, username, comments, setReplayKey, postComment }) {
     const { productId, commentsId } = useParams();
 
     const [text, setText] = useState(`@${username}, `);
@@ -20,7 +22,7 @@ function AddReplayComment({ id, username, setReplayKey }) {
         if (text.length !== 0 && text.trimEnd() !== `@${username},`) {
             setText('');
             setReplayKey(-1);
-            addFeedbackComment(productId, text, commentsId, 'jimbo', id);
+            postComment(comments, text, 'jimbo', id, productId, commentsId)
         }
     }
 
@@ -38,4 +40,20 @@ function AddReplayComment({ id, username, setReplayKey }) {
     )
 }
 
-export default AddReplayComment;
+const mapStateToProps = store => {
+    return {
+        comments: store.comments.items
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setReplayKey: (key) => dispatch(setReplayKey(key)),
+        postComment: (comments, comment, username, messageId, productId, commentsId) => dispatch(postComment(comments, comment, username, messageId, productId, commentsId))
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AddReplayComment);

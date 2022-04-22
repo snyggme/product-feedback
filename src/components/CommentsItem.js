@@ -1,12 +1,7 @@
 // import { useState } from 'react';
 import AddReplayComment from "./AddReplayComment";
 
-function CommentsItem({ id, username, text, width, handleReplay, index, showReplay, setReplayKey }) {
-
-    const handleClick = (e) => {
-        handleReplay(username, width, index)
-    }
-    
+function CommentsItem({ id, username, text, width, index, showReplay, setReplayKey }) {
   	return (
         <div style={{width: `${width}%`, marginLeft: 'auto', borderBottom: '2px solid black'}}>
             <div className='feedback-comments-all-msgs-item' >
@@ -14,12 +9,12 @@ function CommentsItem({ id, username, text, width, handleReplay, index, showRepl
                 <div className='message-container'>
                     <div className='user-info'>
                         <div className='username'>{username}</div>
-                        <div className='replay' onClick={handleClick}>Replay</div>
+                        <div className='replay' onClick={() => setReplayKey(index)}>Replay</div>
                     </div>
                     <div className='message-text'>{text}</div>
                 </div>   
             </div>
-            { showReplay && <AddReplayComment id={id} username={username} setReplayKey={setReplayKey} /> }
+            { showReplay && <AddReplayComment username={username} id={id} /> }
         </div>
   	);
 }

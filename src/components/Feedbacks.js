@@ -20,6 +20,7 @@ function Feedbacks(props) {
     const { active, filter } = feedbacks;
 
     useEffect(() => {
+        console.log(props)
         getFilteredFeedbacks(items, productId, active, filter)
     }, [items, productId, active, filter]);
 

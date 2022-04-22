@@ -5,18 +5,20 @@ import AddComment from "./AddComment";
 import CommentSection from './CommentSection';
 import { useEffect } from 'react';
 
-function Comments({ products, comments: { feedback, items, flatten }, getComments }) {
+function Comments(props) {
     const { productId, commentsId } = useParams();
 
     useEffect(() => {
-        getComments(products.items, productId, commentsId);
+        props.getComments(props.products.items, productId, commentsId);
     }, [])
-    
+
+    const { feedback } = props.comments;
+
     return (
         <div className='feedback-comments-container'>
             <CommentTitle productId={productId} />
             <FeedbackItem {...feedback} productId={productId} />
-            <CommentSection flattenComments={flatten} />
+            <CommentSection {...props} />
             <AddComment productId={productId} commentsId={commentsId}/>
         </div>
     )

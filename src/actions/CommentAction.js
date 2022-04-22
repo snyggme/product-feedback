@@ -1,7 +1,8 @@
-import { getProduct, flatComments } from '../utils/products';
+import { getProduct, flatComments, addComment, addFeedbackComment } from '../utils/products';
 
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const POST_COMMENT = 'POST_COMMENT';
+export const SET_REPLAY_KEY = 'SET_REPLAY_KEY';
 
 export const getComments = (products, productId, commentsId) => {
 	return dispatch => {
@@ -20,11 +21,22 @@ export const getComments = (products, productId, commentsId) => {
 	}
 }
 
-export const postComment = (comment) => {
+export const setReplayKey = (key) => {
+    return dispatch => {
+        dispatch({
+            type: SET_REPLAY_KEY,
+            payload: key
+        });
+	}
+}
+
+export const postComment = (comments, comment, username, messageId) => {
 	return dispatch => {
         dispatch({
             type: POST_COMMENT,
-            payload: comment
+            payload: addComment(comments, comment, username, messageId)
         });
+
+
 	}
 }

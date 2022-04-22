@@ -10,7 +10,11 @@ import {
     setActiveFeedbacks, 
     getFilteredFeedbacks 
 } from '../actions/FeedbackAction';
-import { getComments } from "../actions/CommentAction";
+import { 
+    getComments, 
+    setReplayKey, 
+    postComment 
+} from "../actions/CommentAction";
 
 function ProductsContainer(props) {
     useEffect(() => {
@@ -54,7 +58,9 @@ const mapDispatchToProps = dispatch => {
         getFilteredFeedbacks: (products, productId, active, filter) => dispatch(getFilteredFeedbacks(products, productId, active, filter)),
         setFeedbacksFilter: (filter) => dispatch(setFeedbacksFilter(filter)),
         setActiveFeedbacks: (active) => dispatch(setActiveFeedbacks(active)),
-        getComments: (products, productId, commentsId) => dispatch(getComments(products, productId, commentsId))
+        getComments: (products, productId, commentsId) => dispatch(getComments(products, productId, commentsId)),
+        setReplayKey: (key) => dispatch(setReplayKey(key)),
+        postComment: (comments, comment, username, messageId) => dispatch(postComment(comments, comment, username, messageId))
     }
 }
 

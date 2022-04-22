@@ -833,6 +833,78 @@ export function getProducts(name = '') {
     return products.find(product => product.name.toLowerCase() === name.toLowerCase());
 }
 
+export function addComment(comments, comment, username = 'jimbo' , messageId = -1) {
+    // TODO
+    // make id unique
+    let ret = [...comments];
+    
+    if (messageId < 0) {
+        ret.push({ id: 99, username, text: comment, childs: [] })
+        return
+    }
+        
+    const findPathToElement = (arr) => {
+        let where = [];
+
+        const f = (arr, depth) => {
+            arr.map((item, i) => {
+                if (item.id === messageId) {
+                    where.push({ index: i, depth, here: true })
+                } else if (item.childs.length > 0) {
+                    where.push({ index: i, depth, here: false })
+                    f(item.childs, ++depth)
+                    depth--;
+                }
+            })
+        }
+
+        f(arr, 0)
+
+        let stopFilter = false;
+
+        let filteredWhere = where.filter(item => {
+            if (stopFilter) return false;
+            // filter everything after founded item
+            if (item.here) stopFilter = true;
+
+            return true;
+        })
+        // delete empty branches so in array "filteredWhere" will be correct path to desired element 
+        while(filteredWhere.length > 2 && filteredWhere[filteredWhere.length - 1].depth <= filteredWhere[filteredWhere.length - 2].depth) {
+            filteredWhere.splice(filteredWhere.length - 2, 1)
+        }
+
+        return filteredWhere;
+    }
+    // with path variable we can find any nested comment to travers to it
+    // path = [{ index0, depth0 }, {index1, depth1}, ...]
+    const path = findPathToElement(ret)
+
+    // TODO
+    // make id unique
+
+    const addComment = (arr, path) => {
+        if (path[path.length - 1].depth === 0) {
+            arr[path[path.length - 1].index].childs.push({ id: 99, username, text: comment, childs: [] })
+            return
+        }
+
+        const pushComment = (arr, path) => {
+            if (path.length > 1)
+                pushComment(arr[path[0].index].childs, path.slice(1))
+            else    
+                arr[path[0].index].childs.push({ id: 99, username, text: comment, childs: [] })
+        }
+        
+        pushComment(arr[path[0].index].childs, path.slice(1))
+
+    }
+
+    addComment(ret, path)
+
+    return ret;
+}
+
 export function addFeedbackComment(productName, comment, commentsId, username = 'jimbo', messageId = -1) {
     let productNameIndex;
     let feedbacksIndex;
@@ -858,7 +930,7 @@ export function addFeedbackComment(productName, comment, commentsId, username = 
         products[productNameIndex].feedbacks[feedbacksIndex].comments.push({ id: 99, username, text: comment, childs: [] })
         return
     }
-        
+        console.log(products[productNameIndex].feedbacks[feedbacksIndex].comments)
     const findPathToElement = (arr) => {
         let where = [];
 
