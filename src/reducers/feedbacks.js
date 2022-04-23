@@ -1,7 +1,8 @@
 import {
 	GET_FILTERED_FEEDBACKS,
 	SET_FILTER_FOR_FEEDBACKS,
-	SET_ACTIVE_FEEDBACKS
+	SET_ACTIVE_FEEDBACKS,
+	ADD_UPVOTE
 } from '../actions/FeedbackAction';
 
 const initialState = {
@@ -23,6 +24,11 @@ export const feedbacksReducer = (state = initialState, action) => {
                 active: action.payload,
 			}
 		case GET_FILTERED_FEEDBACKS: 
+			return {
+                ...state,
+                items: [...action.payload],
+			}
+		case ADD_UPVOTE: 
 			return {
                 ...state,
                 items: [...action.payload],

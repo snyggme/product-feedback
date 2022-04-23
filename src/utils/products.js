@@ -840,7 +840,7 @@ export function addComment(comments, comment, username = 'jimbo' , messageId = -
     
     if (messageId < 0) {
         ret.push({ id: 99, username, text: comment, childs: [] })
-        return
+        return ret
     }
         
     const findPathToElement = (arr) => {
@@ -1011,8 +1011,8 @@ export function calculateLength(arr) {
 export const getProduct = (products, name) => 
     products.find(product => product.name.toLowerCase() === name.toLowerCase())
 
-export const getFilteredItems = (products, productId, activeType, filter) => {
-    const product = getProduct(products, productId);
+export const getFilteredItems = (productId, activeType, filter) => {
+    const product = getProducts(productId);
     const feedbacks = product.feedbacks
     .filter(f => {
         if (activeType.toLocaleLowerCase() === 'all')
@@ -1052,4 +1052,23 @@ export const flatComments = (c) => {
     c.map(comment => setWidth(comment, 100))
 
     return arr;
+}
+
+export const addUpvoteToFeedback = (name, id) => {
+    const product = products.find(product => product.name.toLowerCase() === name.toLowerCase());
+
+    let feedbackIndex = 0;
+
+    const feedback = product.feedbacks.find((feedback, i) => {
+        if (feedback.id === Number(id)) {
+            feedbackIndex = i;
+            return true;
+        }
+
+        return false;
+    })
+
+    feedback.votes++;
+
+    return [...product.feedbacks.slice(0, feedbackIndex), feedback, ...product.feedbacks.slice(feedbackIndex + 1)]
 }

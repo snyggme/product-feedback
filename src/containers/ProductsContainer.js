@@ -8,7 +8,8 @@ import { catchProducts } from "../actions/ProductAction";
 import { 
     setFeedbacksFilter, 
     setActiveFeedbacks, 
-    getFilteredFeedbacks 
+    getFilteredFeedbacks,
+    addUpvote
 } from '../actions/FeedbackAction';
 import { 
     getComments, 
@@ -30,7 +31,7 @@ function ProductsContainer(props) {
         <Routes>
             <Route path='/' element={<Products {...props} />} />
             <Route path=':productId' element={<Feedbacks {...props} />} />
-            <Route path=':productId/comments/:commentsId' element={<Comments {...props} />} />
+            <Route path=':productId/comments/:feedbackId' element={<Comments {...props} />} />
             <Route
                 path="*"
                 element={
@@ -48,7 +49,7 @@ const mapStateToProps = store => {
     return {
         products: store.products,
         feedbacks: store.feedbacks,
-        comments: store.comments
+        comments: store.comments,
     }
 }
 
@@ -60,7 +61,8 @@ const mapDispatchToProps = dispatch => {
         setActiveFeedbacks: (active) => dispatch(setActiveFeedbacks(active)),
         getComments: (products, productId, commentsId) => dispatch(getComments(products, productId, commentsId)),
         setReplayKey: (key) => dispatch(setReplayKey(key)),
-        postComment: (comments, comment, username, messageId) => dispatch(postComment(comments, comment, username, messageId))
+        postComment: (comments, comment, username, messageId) => dispatch(postComment(comments, comment, username, messageId)),
+        addUpvote: (name, id) => dispatch(addUpvote(name, id))
     }
 }
 

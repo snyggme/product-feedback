@@ -1,6 +1,4 @@
 import { useState, useRef } from 'react';
-// import { addFeedbackComment } from '../utils/products';
-import { useParams } from "react-router-dom";
 import { connect } from 'react-redux';
 import { 
     setReplayKey, 
@@ -8,8 +6,6 @@ import {
 } from "../actions/CommentAction";
 
 function AddReplayComment({ id, username, comments, setReplayKey, postComment }) {
-    const { productId, commentsId } = useParams();
-
     const [text, setText] = useState(`@${username}, `);
 
     const textArea = useRef(null);
@@ -22,7 +18,7 @@ function AddReplayComment({ id, username, comments, setReplayKey, postComment })
         if (text.length !== 0 && text.trimEnd() !== `@${username},`) {
             setText('');
             setReplayKey(-1);
-            postComment(comments, text, 'jimbo', id, productId, commentsId)
+            postComment(comments, text, 'jimbo', id)
         }
     }
 

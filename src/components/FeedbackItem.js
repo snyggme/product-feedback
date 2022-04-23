@@ -3,13 +3,13 @@ import { faCommentAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { calculateLength } from '../utils/products';
 
-function FeedbackItem({ id, title, votes, comments, type, description, productId }) {
+function FeedbackItem({ id, title, votes, comments, type, description, productId, addUpvote }) {
     const len = calculateLength(comments);
 
     return (
         <div className='feedbacks-item'>
             <div className='feedbacks-item-upvotes'>
-                <div>
+                <div onClick={() => addUpvote(productId, id)}>
                     <i className="arrow-up"></i><div>{votes}</div>
                 </div>
             </div>

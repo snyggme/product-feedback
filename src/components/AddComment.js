@@ -1,9 +1,8 @@
 import { useState, useRef } from 'react';
-import { addFeedbackComment } from '../utils/products';
 
 const MAX_LEFT_CHARS = 250;
 
-function AddComment({ productId, commentsId }) {    
+function AddComment({ postComment, comments: { items } }) {    
     const [leftChars, setleftChars] = useState(MAX_LEFT_CHARS);
     const [text, setText] = useState('');
 
@@ -17,7 +16,7 @@ function AddComment({ productId, commentsId }) {
     const handleClick = () => {
         if (text.length !== 0) {
             setText('');
-            addFeedbackComment(productId, text, commentsId);
+            postComment(items, text, 'jimbo', -1)
         }
     }
 

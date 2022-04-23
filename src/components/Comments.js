@@ -6,10 +6,10 @@ import CommentSection from './CommentSection';
 import { useEffect } from 'react';
 
 function Comments(props) {
-    const { productId, commentsId } = useParams();
+    const { productId, feedbackId } = useParams();
 
     useEffect(() => {
-        props.getComments(props.products.items, productId, commentsId);
+        props.getComments(props.products.items, productId, feedbackId);
     }, [])
 
     const { feedback } = props.comments;
@@ -19,7 +19,7 @@ function Comments(props) {
             <CommentTitle productId={productId} />
             <FeedbackItem {...feedback} productId={productId} />
             <CommentSection {...props} />
-            <AddComment productId={productId} commentsId={commentsId}/>
+            <AddComment {...props}/>
         </div>
     )
 }

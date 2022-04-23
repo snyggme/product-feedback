@@ -4,27 +4,26 @@ import BackButton from "./BackButton";
 import FeedbacksTitle from "./FeedbacksTitle";
 import FeedbackItem from "./FeedbackItem";
 import FeedbacksType from "./FeedbacksType";
-import { getProduct, calculateLength } from '../utils/products';
+import { getProducts } from '../utils/products';
 
 function Feedbacks(props) {
     const { productId } = useParams();
 
     const { 
-        products: { items }, 
-        feedbacks,
+        feedbacks: { items, active, filter },
         getFilteredFeedbacks, 
         setFeedbacksFilter, 
-        setActiveFeedbacks 
+        setActiveFeedbacks,
+        addUpvote
     } = props;
     // feedbacks array is also named items so destruct it separate
-    const { active, filter } = feedbacks;
+    // const { items, active, filter } = feedbacks;
 
     useEffect(() => {
-        console.log(props)
-        getFilteredFeedbacks(items, productId, active, filter)
-    }, [items, productId, active, filter]);
+        getFilteredFeedbacks(productId, active, filter)
+    }, [productId, active, filter]);
 
-    const product = getProduct(items, productId);
+    const product = getProducts(productId);
 
     return (
         <div className='feedbacks-main'>
@@ -34,7 +33,7 @@ function Feedbacks(props) {
             </aside>
             <section className="feedbacks-items-container">
                 <FeedbacksTitle titleNumber={product.feedbacks.length} setFilter={setFeedbacksFilter} activeFilter={filter}/>
-                {feedbacks.items.map(feedback => <FeedbackItem key={feedback.title} {...feedback} productId={productId} />)}
+                {items.map(feedback => <FeedbackItem key={feedback.title} {...feedback} productId={productId} addUpvote={addUpvote} />)}
             </section>
         </div>
     )

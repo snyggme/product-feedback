@@ -1,8 +1,4 @@
 import { 
-	httpGetFeeds, 
-	httpPostFeed, 
-	httpPutFeed, 
-	httpDeleteFeed,
 	cachedFeeds 
 } from '../utils/network';
 import { getProducts } from '../utils/products';

@@ -3,7 +3,6 @@ import {
     GET_COMMENTS,
     SET_REPLAY_KEY
 } from '../actions/CommentAction';
-import { flatComments } from '../utils/products';
 
 const initialState = {
     feedback: {},
@@ -17,8 +16,8 @@ export const commentsReducer = (state = initialState, action) => {
         case POST_COMMENT:
 			return {
 				...state,
-                items: action.payload,
-                flatten: flatComments(action.payload)
+                items: action.payload.comments,
+                flatten: action.payload.flatten
 			}
         case GET_COMMENTS:
             const { comments, feedback, flatten } = action.payload;
