@@ -1,13 +1,13 @@
-import { getProduct, flatComments, addComment } from '../utils/products';
+import { flatComments, addComment } from '../utils/products';
 
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const POST_COMMENT = 'POST_COMMENT';
 export const SET_REPLAY_KEY = 'SET_REPLAY_KEY';
 
-export const getComments = (products, productId, feedbackId) => {
-	return dispatch => {
-        const product = getProduct(products, productId);
-        const feedback = product.feedbacks.find(item => item.id === Number(feedbackId));
+export const getComments = (feedbackId) => {
+	return (dispatch, getState) => {
+        const { feedbacks: { items } } = getState()
+        const feedback = items.find(item => item.id === Number(feedbackId));
         const flatten = flatComments(feedback.comments);
 
         dispatch({
@@ -30,10 +30,10 @@ export const setReplayKey = (key) => {
 	}
 }
 
-export const postComment = (comments, comment, username, messageId) => {
-	return dispatch => {
-
-        const newComments = addComment(comments, comment, username, messageId);
+export const postComment = (comment, username, messageId) => {
+	return (dispatch, getState) => {
+        const { comments: { items } } = getState()
+        const newComments = addComment(items, comment, username, messageId);
         const flatten = flatComments(newComments);
 
         dispatch({
@@ -43,7 +43,5 @@ export const postComment = (comments, comment, username, messageId) => {
                 flatten
             }
         });
-
-
 	}
 }

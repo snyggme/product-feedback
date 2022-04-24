@@ -26,7 +26,7 @@ export const productsReducer = (state = initialState, action) => {
 		case GET_PRODUCTS_SUCCESS:
 			return {
 				...state,
-				items: action.payload,
+				items: JSON.parse(JSON.stringify(action.payload)),
 				isLoading: false,
 				error: null
 			}

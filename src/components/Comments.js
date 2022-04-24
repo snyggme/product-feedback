@@ -9,7 +9,7 @@ function Comments(props) {
     const { productId, feedbackId } = useParams();
 
     useEffect(() => {
-        props.getComments(props.products.items, productId, feedbackId);
+        props.getComments(feedbackId);
     }, [])
 
     const { feedback } = props.comments;

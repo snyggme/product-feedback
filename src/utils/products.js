@@ -828,7 +828,7 @@ const products = [
 
 export function getProducts(name = '') {
     if (name === '')
-        return products;
+        return structuredClone(products);
 
     return products.find(product => product.name.toLowerCase() === name.toLowerCase());
 }
@@ -836,7 +836,7 @@ export function getProducts(name = '') {
 export function addComment(comments, comment, username = 'jimbo' , messageId = -1) {
     // TODO
     // make id unique
-    let ret = [...comments];
+    let ret = structuredClone(comments);
     
     if (messageId < 0) {
         ret.push({ id: 99, username, text: comment, childs: [] })
@@ -1011,9 +1011,10 @@ export function calculateLength(arr) {
 export const getProduct = (products, name) => 
     products.find(product => product.name.toLowerCase() === name.toLowerCase())
 
-export const getFilteredItems = (productId, activeType, filter) => {
-    const product = getProducts(productId);
-    const feedbacks = product.feedbacks
+export const getFilteredItems = (activeType, filter, productFeedbacks) => {
+    const product = structuredClone(productFeedbacks);
+
+    const feedbacks = product
     .filter(f => {
         if (activeType.toLocaleLowerCase() === 'all')
             return true;
@@ -1054,12 +1055,11 @@ export const flatComments = (c) => {
     return arr;
 }
 
-export const addUpvoteToFeedback = (name, id) => {
-    const product = products.find(product => product.name.toLowerCase() === name.toLowerCase());
-
+export const addUpvoteToFeedback = (id, items) => {
+    const feedbacks = structuredClone(items);
     let feedbackIndex = 0;
 
-    const feedback = product.feedbacks.find((feedback, i) => {
+    const feedback = feedbacks.find((feedback, i) => {
         if (feedback.id === Number(id)) {
             feedbackIndex = i;
             return true;
@@ -1070,5 +1070,5 @@ export const addUpvoteToFeedback = (name, id) => {
 
     feedback.votes++;
 
-    return [...product.feedbacks.slice(0, feedbackIndex), feedback, ...product.feedbacks.slice(feedbackIndex + 1)]
+    return [...feedbacks.slice(0, feedbackIndex), feedback, ...feedbacks.slice(feedbackIndex + 1)]
 }

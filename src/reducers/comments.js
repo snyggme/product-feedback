@@ -16,16 +16,16 @@ export const commentsReducer = (state = initialState, action) => {
         case POST_COMMENT:
 			return {
 				...state,
-                items: action.payload.comments,
-                flatten: action.payload.flatten
+                items: JSON.parse(JSON.stringify(action.payload.comments)),
+                flatten: JSON.parse(JSON.stringify(action.payload.flatten))
 			}
         case GET_COMMENTS:
             const { comments, feedback, flatten } = action.payload;
 
             return {
                 ...state,
-                items: comments,
-                flatten,
+                items: JSON.parse(JSON.stringify(comments)),
+                flatten: JSON.parse(JSON.stringify(flatten)),
                 feedback
             }
         case SET_REPLAY_KEY:

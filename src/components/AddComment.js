@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 
 const MAX_LEFT_CHARS = 250;
 
-function AddComment({ postComment, comments: { items } }) {    
+function AddComment({ postComment }) {    
     const [leftChars, setleftChars] = useState(MAX_LEFT_CHARS);
     const [text, setText] = useState('');
 
@@ -16,7 +16,7 @@ function AddComment({ postComment, comments: { items } }) {
     const handleClick = () => {
         if (text.length !== 0) {
             setText('');
-            postComment(items, text, 'jimbo', -1)
+            postComment(text, 'jimbo', -1)
         }
     }
 

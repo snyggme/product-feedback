@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { catchProducts } from "../actions/ProductAction";
 import { 
+    getFeedbacks,
     setFeedbacksFilter, 
     setActiveFeedbacks, 
     getFilteredFeedbacks,
@@ -56,6 +57,7 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
     return {
         catchProducts: () => dispatch(catchProducts()),
+        getFeedbacks: (productId) => dispatch(getFeedbacks(productId)),
         getFilteredFeedbacks: (products, productId, active, filter) => dispatch(getFilteredFeedbacks(products, productId, active, filter)),
         setFeedbacksFilter: (filter) => dispatch(setFeedbacksFilter(filter)),
         setActiveFeedbacks: (active) => dispatch(setActiveFeedbacks(active)),

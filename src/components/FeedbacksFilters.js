@@ -1,5 +1,5 @@
 
-function FeedbacksType({ active, setActive }) {
+function FeedbacksFilters({ active, setActive }) {
 
     const handleClick = (e) => {
         setActive(e.target.innerText);
@@ -22,4 +22,4 @@ function FeedbacksType({ active, setActive }) {
 
 const feedbackTypes = ['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature'];
 
-export default FeedbacksType;
+export default FeedbacksFilters;

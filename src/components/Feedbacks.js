@@ -3,37 +3,40 @@ import { useEffect } from 'react';
 import BackButton from "./BackButton";
 import FeedbacksTitle from "./FeedbacksTitle";
 import FeedbackItem from "./FeedbackItem";
-import FeedbacksType from "./FeedbacksType";
-import { getProducts } from '../utils/products';
+import FeedbacksFilters from "./FeedbacksFilters";
 
 function Feedbacks(props) {
     const { productId } = useParams();
 
     const { 
-        feedbacks: { items, active, filter },
+        feedbacks: { filtered, active, filter, isLoading },
         getFilteredFeedbacks, 
         setFeedbacksFilter, 
         setActiveFeedbacks,
-        addUpvote
+        addUpvote,
+        getFeedbacks
     } = props;
-    // feedbacks array is also named items so destruct it separate
-    // const { items, active, filter } = feedbacks;
 
     useEffect(() => {
-        getFilteredFeedbacks(productId, active, filter)
-    }, [productId, active, filter]);
+        getFeedbacks(productId);
+    }, [])
+  
+    useEffect(() => {
+        getFilteredFeedbacks(active, filter)
+    }, [active, filter]);
 
-    const product = getProducts(productId);
+    if (isLoading)
+        return <div className='loading'/>
 
     return (
         <div className='feedbacks-main'>
             <aside>
                 <BackButton to='/products' />
-                <FeedbacksType setActive={setActiveFeedbacks} active={active}/>
+                <FeedbacksFilters setActive={setActiveFeedbacks} active={active}/>
             </aside>
             <section className="feedbacks-items-container">
-                <FeedbacksTitle titleNumber={product.feedbacks.length} setFilter={setFeedbacksFilter} activeFilter={filter}/>
-                {items.map(feedback => <FeedbackItem key={feedback.title} {...feedback} productId={productId} addUpvote={addUpvote} />)}
+                <FeedbacksTitle titleNumber={filtered.length} setFilter={setFeedbacksFilter} activeFilter={filter}/>
+                {filtered.map(feedback => <FeedbackItem key={feedback.title} {...feedback} productId={productId} addUpvote={addUpvote} />)}
             </section>
         </div>
     )
