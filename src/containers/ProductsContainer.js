@@ -1,6 +1,7 @@
 import Products from "../components/Products";
 import Feedbacks from "../components/Feedbacks";
 import Comments from "../components/Comments";
+import AddFeedback from "../components/AddFeedback";
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -33,6 +34,7 @@ function ProductsContainer(props) {
             <Route path='/' element={<Products {...props} />} />
             <Route path=':productId' element={<Feedbacks {...props} />} />
             <Route path=':productId/comments/:feedbackId' element={<Comments {...props} />} />
+            <Route path=':productId/add' element={<AddFeedback />} />
             <Route
                 path="*"
                 element={
