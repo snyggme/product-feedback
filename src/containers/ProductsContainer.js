@@ -34,7 +34,7 @@ function ProductsContainer(props) {
             <Route path='/' element={<Products {...props} />} />
             <Route path=':productId' element={<Feedbacks {...props} />} />
             <Route path=':productId/comments/:feedbackId' element={<Comments {...props} />} />
-            <Route path=':productId/add' element={<AddFeedback />} />
+            <Route path=':productId/add' element={<AddFeedback {...props} />} />
             <Route
                 path="*"
                 element={
