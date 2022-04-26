@@ -28,7 +28,10 @@ function AddFeedback({ products: {items} }) {
   	return (
         <div className='add-feedback-panel'>
             <div className='selected-product'>
-                <div className="name"><b>Product: </b>{name}</div>
+                <div className="name">
+                    <div>
+                        <b>Product: </b><br/>{name}</div>
+                    </div>
                 <div className="desc">{description}</div>
             </div>
             <div className='panel-form'>
