@@ -2,55 +2,85 @@ import { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAdd, faCancel } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
-import { getProduct } from '../utils/products';
+import SelectedProduct from './SelectedProduct';
 
 const iconStyle = {
     paddingRight: '10px'
 }
 
-function AddFeedback({ products: {items} }) {
-    const [text, setText] = useState('');
-
-    const { productId } = useParams();
-    const { name, description } = getProduct(items, productId);
-
-    const handleTextArea = (e) => {
-        setText(e.target.value)
-    }
+function AddFeedback({ products: { items }, addFeedback }) {
+    const [state, setState] = useState({
+        textarea: '',
+        select: 'Feature',
+        input: ''
+    });
 
     const inputName = useRef(null);
     const textArea = useRef(null);
+    const select = useRef(null);
+
+    const { productId } = useParams();
+
+    const handleChange = (type) => (e) => {
+        setState({
+            ...state,
+            [type]: e.target.value
+        })
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+ 
+        addFeedback({
+            title: state.input,
+            type: state.select,
+            description: state.textarea
+        }, productId);
+
+        setState({
+            textarea: '',
+            input: '',
+            select: 'Feature'
+        })
+    }
+
+    const handleCancel = (e) => {
+        e.preventDefault();
+
+        setState({
+            textarea: '',
+            input: '',
+            select: 'Feature'
+        })
     }
 
   	return (
         <div className='add-feedback-panel'>
-            <div className='selected-product'>
-                <div className="name">
-                    <div>
-                        <b>Product: </b><br/>{name}</div>
-                    </div>
-                <div className="desc">{description}</div>
-            </div>
+            <SelectedProduct items={items} />
             <div className='panel-form'>
                 <h1>Add feedback panel</h1>
                 <form id='add-feedback-form' onSubmit={handleSubmit}>
                     <div>
-                        <label for="name">New feedback's name:</label><br/>
+                        <label htmlFor="feedback-name">New feedback's name:</label><br/>
                         <input 
                             required 
-                            ref={inputName} 
+                            ref={inputName}
+                            value={state.input} 
+                            onChange={handleChange('input')} 
                             type="text" 
-                            id="name" 
-                            placeholder="Feedback name"
+                            id="feedback-name" 
+                            placeholder="Feedback's name"
                         />
                     </div>
                     <div className='choose-type'>
-                        <label for="type">Choose feedback's type:</label><br/>
+                        <label htmlFor="standard-select">Choose feedback's type:</label><br/>
                         <div className='select'>
-                            <select id="standard-select">
+                            <select 
+                                id="standard-select" 
+                                ref={select} 
+                                onChange={handleChange('select')}
+                                value={state.select}
+                            >
                                 <option value="Feature">Feature</option>
                                 <option value="UI">UI</option>
                                 <option value="UX">UX</option>
@@ -62,22 +92,22 @@ function AddFeedback({ products: {items} }) {
                     </div>
                     <div className='textarea-container'>
                         <div>
-                            <label for="description">Add description:</label><br/>
+                            <label htmlFor="feedback-description">Add description:</label><br/>
                             <textarea 
                                 ref={textArea}
-                                value={text}
-                                onChange={handleTextArea} 
-                                id="description"
+                                value={state.textarea}
+                                onChange={handleChange('textarea')} 
+                                id="feedback-description"
                                 placeholder="Write description here..." 
                                 maxLength='250' />
                         </div>
                         <div className='textarea-container-btns'>
                             <button type="submit" className="btn btn-blue">
-                                <FontAwesomeIcon icon={faAdd} size='m' style={iconStyle}/>
+                                <FontAwesomeIcon icon={faAdd} style={iconStyle}/>
                                 Add
                             </button>
-                            <button className="btn btn-cancel">
-                                <FontAwesomeIcon icon={faCancel} size='m' style={iconStyle}/>
+                            <button className="btn btn-cancel" onClick={handleCancel}>
+                                <FontAwesomeIcon icon={faCancel} style={iconStyle}/>
                                 Cancel
                             </button>
                         </div>

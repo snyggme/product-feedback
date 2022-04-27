@@ -1,7 +1,7 @@
 import { 
 	cachedFeeds 
 } from '../utils/network';
-import { getProducts } from '../utils/products';
+import { getProducts, addFeedbackToProduct } from '../utils/products';
 
 export const GET_PRODUCTS_REQUEST = 'GET_PRODUCTS_REQUEST';
 export const GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS';
@@ -18,6 +18,8 @@ export const PUT_PRODUCT_FAIL = 'PUT_PRODUCT_FAIL';
 export const GET_FILTERED_FEEDBACKS = 'GET_FILTERED_FEEDBACKS';
 export const SET_FILTER_FOR_FEEDBACKS = 'SET_FILTER_FOR_FEEDBACKS';
 export const SET_ACTIVE_FEEDBACKS = 'SET_ACTIVE_FEEDBACKS';
+
+export const ADD_FEEDBACK_TO_PRODUCT = 'ADD_FEEDBACK_TO_PRODUCT';
 
 export const catchProducts = () => {
 	return dispatch => {
@@ -38,6 +40,17 @@ export const catchProducts = () => {
 				})
 			}
 		} 
+	}
+}
+
+export const addFeedback = (feedback, productId) => {
+	return (dispatch, getState) => {
+		const { products: { items } } = getState();
+
+		dispatch({
+			type: ADD_FEEDBACK_TO_PRODUCT,
+			payload: addFeedbackToProduct(items, feedback, productId)
+		})
 	}
 }
 

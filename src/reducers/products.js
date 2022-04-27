@@ -8,6 +8,7 @@ import {
 	PUT_PRODUCT_REQUEST,
     PUT_PRODUCT_SUCCESS,
     PUT_PRODUCT_FAIL,
+	ADD_FEEDBACK_TO_PRODUCT
 } from '../actions/ProductAction';
 
 const initialState = {
@@ -18,6 +19,11 @@ const initialState = {
 
 export const productsReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case ADD_FEEDBACK_TO_PRODUCT:
+			return {
+				...state,
+				items: JSON.parse(JSON.stringify(action.payload))
+			}
 		case GET_PRODUCTS_REQUEST:
 			return {
 				...state,

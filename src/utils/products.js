@@ -930,7 +930,7 @@ export function addFeedbackComment(productName, comment, commentsId, username = 
         products[productNameIndex].feedbacks[feedbacksIndex].comments.push({ id: 99, username, text: comment, childs: [] })
         return
     }
-        console.log(products[productNameIndex].feedbacks[feedbacksIndex].comments)
+    
     const findPathToElement = (arr) => {
         let where = [];
 
@@ -1008,8 +1008,11 @@ export function calculateLength(arr) {
     return len;
 }
 
-export const getProduct = (products, name) => 
-    products.find(product => product.name.toLowerCase() === name.toLowerCase())
+export const getProduct = (products, name) => {
+    console.log(products)
+    return products.find(product => product.name.toLowerCase() === name.toLowerCase())
+}
+    
 
 export const getFilteredItems = (activeType, filter, productFeedbacks) => {
     const product = structuredClone(productFeedbacks);
@@ -1057,11 +1060,11 @@ export const flatComments = (c) => {
 
 export const addUpvoteToFeedback = (id, items) => {
     const feedbacks = structuredClone(items);
-    let feedbackIndex = 0;
+    let index = 0;
 
     const feedback = feedbacks.find((feedback, i) => {
         if (feedback.id === Number(id)) {
-            feedbackIndex = i;
+            index = i;
             return true;
         }
 
@@ -1070,5 +1073,32 @@ export const addUpvoteToFeedback = (id, items) => {
 
     feedback.votes++;
 
-    return [...feedbacks.slice(0, feedbackIndex), feedback, ...feedbacks.slice(feedbackIndex + 1)]
+    return [...feedbacks.slice(0, index), feedback, ...feedbacks.slice(index + 1)]
+}
+
+export const addFeedbackToProduct = (items, { title, type, description }, id) => {
+    const products = structuredClone(items);
+    let index = 0;
+    
+    const product = products.find((item, i) => {
+        if (item.name.toLowerCase() === id) {
+            index = i;
+            return true;
+        }
+
+        return false;
+    })
+
+    const lastFeedbackId = product.feedbacks[product.feedbacks.length - 1].id;
+
+    product.feedbacks.push({
+        id: lastFeedbackId + 1,
+        title,
+        type,
+        description,
+        votes: 0,
+        comments: []
+    });
+
+    return [...products.slice(0, index), product, ...products.slice(index + 1)]
 }

@@ -1,7 +1,7 @@
 import { 
 	getFilteredItems, 
 	addUpvoteToFeedback, 
-	getProducts 
+	getProduct 
 } from '../utils/products';
 
 export const GET_FEEDBACKS_REQUEST = 'GET_FEEDBACKS_REQUEST';
@@ -15,15 +15,17 @@ export const SET_ACTIVE_FEEDBACKS = 'SET_ACTIVE_FEEDBACKS';
 export const ADD_UPVOTE = 'ADD_UPVOTE';
 
 export const getFeedbacks = (productId) => {
-	return dispatch => {
+	return (dispatch, getState) => {
 		dispatch({
 			type: GET_FEEDBACKS_REQUEST
 		});
 
 		try {
+			const { products: { items } } = getState();
+			
 			dispatch({
 				type: GET_FEEDBACKS_SUCCESS,
-				payload: getProducts(productId).feedbacks
+				payload: getProduct(items, productId).feedbacks
 			})
 		} catch (e) {
 			dispatch({

@@ -1,10 +1,13 @@
+import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFeed } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 
 function FeedbacksTitle({ titleNumber, setFilter, activeFilter }) {
     const [ showList, setShowList ] = useState(false);
-
+    const { productId } = useParams();
+    let navigate = useNavigate();
+ 
     const handleMenuClick = () => {
         setShowList(!showList)
     }
@@ -38,7 +41,10 @@ function FeedbacksTitle({ titleNumber, setFilter, activeFilter }) {
                     </ul>}    
                 </span>
             </div>  
-            <button className='feedbacks-items-title-add-btn'>+ Add feedback</button>
+            <button className='feedbacks-items-title-add-btn' 
+                onClick={() => navigate(`/products/${productId.toLowerCase()}/add`)}>
+                    + Add Feedback
+            </button>
         </div>
     )
 }

@@ -5,7 +5,7 @@ import AddFeedback from "../components/AddFeedback";
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { catchProducts } from "../actions/ProductAction";
+import { catchProducts, addFeedback } from "../actions/ProductAction";
 import { 
     getFeedbacks,
     setFeedbacksFilter, 
@@ -66,7 +66,8 @@ const mapDispatchToProps = dispatch => {
         getComments: (products, productId, commentsId) => dispatch(getComments(products, productId, commentsId)),
         setReplayKey: (key) => dispatch(setReplayKey(key)),
         postComment: (comments, comment, username, messageId) => dispatch(postComment(comments, comment, username, messageId)),
-        addUpvote: (name, id) => dispatch(addUpvote(name, id))
+        addUpvote: (name, id) => dispatch(addUpvote(name, id)),
+        addFeedback: (feedback, productId) => dispatch(addFeedback(feedback, productId))
     }
 }
 

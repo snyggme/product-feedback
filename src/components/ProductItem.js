@@ -13,13 +13,13 @@ function ProductItem({ name, description }) {
             <div className="product-item-desc">{description}</div>
             <div className="product-item-link">
                 <div>                
-                    <FontAwesomeIcon icon={faAdd} size='m' style={iconStyle}/>
+                    <FontAwesomeIcon icon={faAdd} style={iconStyle}/>
                     <Link className='element-underline-width' to={`/products/${name.toLowerCase()}/add`}>
                         Add feedback
                     </Link>
                 </div>
                 <div>                
-                    <FontAwesomeIcon icon={faEye} size='m' style={iconStyle}/>
+                    <FontAwesomeIcon icon={faEye} style={iconStyle}/>
                     <Link className='element-underline-width' to={`/products/${name.toLowerCase()}`}>
                         See feedbacks
                     </Link>
