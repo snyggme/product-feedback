@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 function SignForm(props) {
-    const { type, setModal } = props;
+    const { type, setModal, signinUser, createUser, auth } = props;
 
     const inputName = useRef(null);
     const inputPass = useRef(null);
@@ -18,13 +18,31 @@ function SignForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (type === 'login') {
+            const user = {
+                name: inputName.current.value,
+                password: inputPass.current.value
+            }
+
+            signinUser(user);
+
+        } else {
+            const user = {
+                name: inputName.current.value,
+                email: inputEmail.current.value,
+                password: inputPass.current.value
+            }
+
+            createUser(user)
+        }
     }
 
     const validate = ({ username, password }) => {
 
     }
 
-    const { isSigning } = props.auth;
+    const { isSigning } = auth;
 
     if (isSigning)
         return <div className='loading' />
@@ -34,7 +52,7 @@ function SignForm(props) {
             <form id='sign-form' onSubmit={handleSubmit}>
                 <input 
                     required 
-                    ref={inputName} 
+                    ref={inputName}
                     type="name" 
                     id="name" 
                     placeholder="Username"

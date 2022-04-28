@@ -1,4 +1,4 @@
-import auth from '../utils/auth';
+import auth, { addUser, getUser } from '../utils/auth';
 import { getBackendToken } from '../utils/network';
 
 export const LOGOUT = 'LOGOUT';
@@ -22,33 +22,73 @@ export const logout = () => {
 }
 
 export const createUser = (user) => {
-	return async dispatch => {
+	// return async dispatch => {
+	// 	dispatch({
+	// 		type: POST_USER_REQUEST
+	// 	})
+
+	// 	await getBackendToken(
+	// 		dispatch, 
+	// 		user, 
+	// 		'/users', 
+	// 		POST_USER_SUCCESS,
+	// 		POST_USER_FAIL
+	// 	)
+	// }
+	return dispatch => {
 		dispatch({
 			type: POST_USER_REQUEST
 		})
 
-		await getBackendToken(
-			dispatch, 
-			user, 
-			'/users', 
-			POST_USER_SUCCESS,
-			POST_USER_FAIL
-		)
+		try {
+			addUser(user);
+
+			dispatch({
+				type: POST_USER_SUCCESS,
+				payload: user
+			})
+		} catch (e) {
+			dispatch({
+				type: POST_USER_FAIL,
+				payload: new Error(e).message
+			})
+		}
 	}
 }
 
 export const signinUser = (user) => {
-	return async dispatch => {
+	// return async dispatch => {
+	// 	dispatch({
+	// 		type: SIGNIN_USER_REQUEST
+	// 	})
+
+	// 	await getBackendToken(
+	// 		dispatch, 
+	// 		user, 
+	// 		'/auth',
+	// 		SIGNIN_USER_SUCCESS,
+	// 		SIGNIN_USER_FAIL
+	// 	)
+	// }
+	return dispatch => {
 		dispatch({
 			type: SIGNIN_USER_REQUEST
 		})
 
-		await getBackendToken(
-			dispatch, 
-			user, 
-			'/auth',
-			SIGNIN_USER_SUCCESS,
-			SIGNIN_USER_FAIL
-		)
+		try {
+			if (getUser(user)) {
+				dispatch({
+					type: SIGNIN_USER_SUCCESS,
+					payload: user
+				})
+			} else {
+				throw new Error('User is not found');
+			}
+		} catch (e) {
+			dispatch({
+				type: SIGNIN_USER_FAIL,
+				payload: new Error(e).message
+			})
+		}
 	}
 }

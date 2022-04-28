@@ -10,6 +10,7 @@ import {
 import auth from '../utils/auth';
 
 const initialState = {
+	username: '',
 	isSigning: false,
 	// isSigned: auth.isSigned(),
 	isSigned: false,
@@ -30,15 +31,16 @@ export const authReducer = (state = initialState, action) => {
 				isSigning: true
 			}
 		case POST_USER_SUCCESS:
-			auth.signup({
-				token: action.payload.token,
-				username: action.payload.username
-			});
+			// auth.signup({
+			// 	token: action.payload.token,
+			// 	username: action.payload.username
+			// });
 			
 			return {
 				...state,
 				isSigned: true,
-				isSigning: false
+				isSigning: false,
+				username: action.payload.name
 			};
 		case POST_USER_FAIL:
 			return {
@@ -54,15 +56,16 @@ export const authReducer = (state = initialState, action) => {
 				isSigning: true
 			}
 		case SIGNIN_USER_SUCCESS:
-			auth.signin({
-				token: action.payload.token,
-				username: action.payload.username
-			});
+			// auth.signin({
+			// 	token: action.payload.token,
+			// 	username: action.payload.username
+			// });
 			
 			return {
 				...state,
 				isSigned: true,
-				isSigning: false
+				isSigning: false,
+				username: action.payload.name
 			};
 		case SIGNIN_USER_FAIL:
 			return {

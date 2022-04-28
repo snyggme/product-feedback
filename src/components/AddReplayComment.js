@@ -36,10 +36,6 @@ function AddReplayComment({ id, username, setReplayKey, postComment }) {
     )
 }
 
-const mapStateToProps = store => {
-    return { }
-}
-
 const mapDispatchToProps = dispatch => {
     return {
         setReplayKey: (key) => dispatch(setReplayKey(key)),
@@ -48,6 +44,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(AddReplayComment);

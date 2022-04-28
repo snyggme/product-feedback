@@ -1008,12 +1008,8 @@ export function calculateLength(arr) {
     return len;
 }
 
-export const getProduct = (products, name) => {
-    console.log(products)
-    return products.find(product => product.name.toLowerCase() === name.toLowerCase())
-}
+export const getProduct = (products, name) => products.find(product => product.name.toLowerCase() === name.toLowerCase())
     
-
 export const getFilteredItems = (activeType, filter, productFeedbacks) => {
     const product = structuredClone(productFeedbacks);
 

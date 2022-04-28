@@ -76,3 +76,27 @@ class Auth {
 }
 
 export default new Auth();
+
+const users = [
+    {
+        name: 'bob',
+        email: 'bob@gmail.com',
+        password: 123
+    },
+    {
+        name: 'jim',
+        email: 'jim@gmail.com',
+        password: 123
+    },
+    {
+        name: 'sally',
+        email: 'sall@gmail.com',
+        password: 123
+    },
+]
+
+export const getUsers = () => users;
+
+export const getUser = (user) => users.find(u => u.name === user.name && u.password === Number(user.password));
+
+export const addUser = (user) => users.push(user);
