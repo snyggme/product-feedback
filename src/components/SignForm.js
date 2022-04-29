@@ -1,8 +1,6 @@
-import React, { useRef, useState } from 'react';
+import { useRef } from 'react';
 
-function SignForm(props) {
-    const { type, setModal, signinUser, createUser, auth } = props;
-
+function SignForm({ type, setModal, signinUser, createUser, auth }) {
     const inputName = useRef(null);
     const inputPass = useRef(null);
     const inputEmail = useRef(null);

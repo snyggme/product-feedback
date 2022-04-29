@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
-function Navbar({ onClick, isSigned }) {
+function Navbar({ onClick, isSigned, username }) {
     return (
         <nav className='flex-nav'>
             <ul >
@@ -11,17 +11,17 @@ function Navbar({ onClick, isSigned }) {
                     </Link>
                 </li>
                 <li className='nav-feedbacks'>
-                    <Link to='/products' className='element-underline'>Products</Link>
+                    { isSigned && <Link to='/products' className='element-underline'>Products</Link>}
                 </li>
                 <li className='nav-login'>
                     { isSigned 
-                        ? <p>Hello, BOB</p>
+                        ? <Link to='/profile' className='element-underline'>Profile</Link>
                         : <p className='element-underline' onClick={onClick('login')}>Log in</p>
                     }
                 </li>
                 <li className='nav-signup'>
                     { isSigned 
-                        ? <button className='btn-black' onClick={onClick('logout')}>Logout</button>
+                        ? <p className='element-underline' onClick={onClick('logout')}>Logout</p>
                         : <button className='btn-black' onClick={onClick('signup')}>Sign Up</button>
                     }
                 </li>

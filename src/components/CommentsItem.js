@@ -14,7 +14,7 @@ function CommentsItem({ id, username, text, width, index, showReplay, setReplayK
                     <div className='message-text'>{text}</div>
                 </div>   
             </div>
-            { showReplay && <AddReplayComment username={username} id={id} /> }
+            { showReplay && <AddReplayComment commentUsername={username} id={id} /> }
         </div>
   	);
 }

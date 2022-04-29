@@ -1,12 +1,12 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
+import { connect } from 'react-redux';
+import { postComment } from "../actions/CommentAction";
 
 const MAX_LEFT_CHARS = 250;
 
-function AddComment({ postComment }) {    
+function AddComment({ postComment, username }) {    
     const [leftChars, setleftChars] = useState(MAX_LEFT_CHARS);
     const [text, setText] = useState('');
-
-    const textArea = useRef(null);
 
     const handleTextArea = (e) => {
         setText(e.target.value)
@@ -16,7 +16,7 @@ function AddComment({ postComment }) {
     const handleClick = () => {
         if (text.length !== 0) {
             setText('');
-            postComment(text, 'jimbo', -1)
+            postComment(text, username, -1)
         }
     }
 
@@ -24,7 +24,6 @@ function AddComment({ postComment }) {
         <div className='feedback-comments-add-comment'>
             <span>Add Comment</span>
             <textarea 
-                ref={textArea}
                 value={text}
                 onChange={handleTextArea} 
                 placeholder="Type your comment here..." 
@@ -37,4 +36,19 @@ function AddComment({ postComment }) {
     )
 }
 
-export default AddComment;
+const mapStateToProps = store => {
+    return {
+        username: store.auth.username
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        postComment: (comment, username, messageId) => dispatch(postComment(comment, username, messageId))
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AddComment);

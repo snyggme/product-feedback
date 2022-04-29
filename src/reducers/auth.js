@@ -21,6 +21,7 @@ export const authReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case LOGOUT:
 			return {
+				username: '',
 				error: null,
 				isSigning: false,
 				isSigned: false

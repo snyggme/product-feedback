@@ -17,9 +17,9 @@ function Comments(props) {
     return (
         <div className='feedback-comments-container'>
             <CommentTitle productId={productId} />
-            <FeedbackItem {...feedback} productId={productId} />
+            <FeedbackItem {...feedback} productId={productId} addUpvote={props.addUpvote} />
             <CommentSection {...props} />
-            <AddComment {...props}/>
+            <AddComment />
         </div>
     )
 }

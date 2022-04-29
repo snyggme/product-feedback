@@ -47,19 +47,29 @@ export const getFilteredFeedbacks = (activeType, filter) => {
 }
 
 export const setFeedbacksFilter = (filter) => {
-	return dispatch => {
+	return (dispatch, getState) => {
+		const { feedbacks: { items, active } } = getState();
+
 		dispatch({
 			type: SET_FILTER_FOR_FEEDBACKS,
-			payload: filter
+			payload: {
+				filter,
+				filtered: getFilteredItems(active, filter, items)
+			}
 		})
 	}
 }
 
-export const setActiveFeedbacks = (activeType) => {
-	return dispatch => {
+export const setActiveFeedbacks = (active) => {
+	return (dispatch, getState) => {
+		const { feedbacks: { items, filter } } = getState();
+
 		dispatch({
 			type: SET_ACTIVE_FEEDBACKS,
-			payload: activeType
+			payload: {
+				active,
+				filtered: getFilteredItems(active, filter, items)
+			}
 		})
 	}
 }

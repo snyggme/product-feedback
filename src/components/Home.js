@@ -1,6 +1,6 @@
 import manager from '../assets/sticker.png';
 
-function Home({ setModal }) {
+function Home({ handleHomeButton }) {
 
     return (
         <section className="home">
@@ -10,7 +10,7 @@ function Home({ setModal }) {
                     <p>Product feedback app is amazing platform that allows you to create honest ratings of your favorite tools and cooperate with others.</p>
                     <button 
                         className='btn-black' 
-                        onClick={() => setModal({ show: true, type: 'login'})}>
+                        onClick={handleHomeButton}>
                             Get started
                     </button>
                 </div>

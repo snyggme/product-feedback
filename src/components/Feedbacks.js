@@ -5,26 +5,21 @@ import FeedbacksTitle from "./FeedbacksTitle";
 import FeedbackItem from "./FeedbackItem";
 import FeedbacksFilters from "./FeedbacksFilters";
 
-function Feedbacks(props) {
+function Feedbacks({
+    feedbacks: { filtered, active, filter, isLoading },
+    getFilteredFeedbacks, 
+    setFeedbacksFilter, 
+    setActiveFeedbacks,
+    addUpvote,
+    getFeedbacks
+}) {
     const { productId } = useParams();
-
-    const { 
-        feedbacks: { filtered, active, filter, isLoading },
-        getFilteredFeedbacks, 
-        setFeedbacksFilter, 
-        setActiveFeedbacks,
-        addUpvote,
-        getFeedbacks
-    } = props;
 
     useEffect(() => {
         getFeedbacks(productId);
+        getFilteredFeedbacks(active, filter)
     }, [])
   
-    useEffect(() => {
-        getFilteredFeedbacks(active, filter)
-    }, [active, filter]);
-
     if (isLoading)
         return <div className='loading'/>
 

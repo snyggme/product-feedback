@@ -43,12 +43,14 @@ export const feedbacksReducer = (state = initialState, action) => {
 		case SET_FILTER_FOR_FEEDBACKS: 
 			return {
 				...state,
-				filter: action.payload,
+				filter: action.payload.filter,
+				filtered: JSON.parse(JSON.stringify(action.payload.filtered))
 			}
 		case SET_ACTIVE_FEEDBACKS: 
 			return {
 				...state,
-                active: action.payload,
+				active: action.payload.active,
+				filtered: JSON.parse(JSON.stringify(action.payload.filtered))
 			}
 		case GET_FILTERED_FEEDBACKS: 
 			return {

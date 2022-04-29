@@ -5,8 +5,8 @@ import {
     postComment 
 } from "../actions/CommentAction";
 
-function AddReplayComment({ id, username, setReplayKey, postComment }) {
-    const [text, setText] = useState(`@${username}, `);
+function AddReplayComment({ id, commentUsername, username, setReplayKey, postComment }) {
+    const [text, setText] = useState(`@${commentUsername}, `);
 
     const textArea = useRef(null);
 
@@ -15,10 +15,10 @@ function AddReplayComment({ id, username, setReplayKey, postComment }) {
     }
 
     const handlePost = () => {
-        if (text.length !== 0 && text.trimEnd() !== `@${username},`) {
+        if (text.length !== 0 && text.trimEnd() !== `@${commentUsername},`) {
             setText('');
             setReplayKey(-1);
-            postComment(text, 'jimbo', id)
+            postComment(text, username, id)
         }
     }
 
@@ -36,6 +36,12 @@ function AddReplayComment({ id, username, setReplayKey, postComment }) {
     )
 }
 
+const mapStateToProps = store => {
+    return {
+        username: store.auth.username
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         setReplayKey: (key) => dispatch(setReplayKey(key)),
@@ -44,6 +50,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(AddReplayComment);

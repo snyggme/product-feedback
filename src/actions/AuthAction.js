@@ -12,8 +12,14 @@ export const SIGNIN_USER_SUCCESS = 'SIGNIN_USER_SUCCESS';
 export const SIGNIN_USER_FAIL = 'SIGNIN_USER_FAIL';
 
 export const logout = () => {
+	// return dispatch => {
+	// 	auth.signout()
+
+	// 	dispatch({
+	// 		type: LOGOUT
+	// 	});
+	// } 
 	return dispatch => {
-		auth.signout()
 
 		dispatch({
 			type: LOGOUT

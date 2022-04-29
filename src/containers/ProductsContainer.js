@@ -65,7 +65,7 @@ const mapDispatchToProps = dispatch => {
         setActiveFeedbacks: (active) => dispatch(setActiveFeedbacks(active)),
         getComments: (products, productId, commentsId) => dispatch(getComments(products, productId, commentsId)),
         setReplayKey: (key) => dispatch(setReplayKey(key)),
-        postComment: (comments, comment, username, messageId) => dispatch(postComment(comments, comment, username, messageId)),
+        postComment: (comment, username, messageId) => dispatch(postComment(comment, username, messageId)),
         addUpvote: (name, id) => dispatch(addUpvote(name, id)),
         addFeedback: (feedback, productId) => dispatch(addFeedback(feedback, productId))
     }

@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAdd, faCancel } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
@@ -10,11 +10,7 @@ const iconStyle = {
 }
 
 function PanelForm({ addFeedback }) {
-    const [state, setState] = useState({
-        textarea: '',
-        select: 'Feature',
-        input: ''
-    });
+    let navigate = useNavigate();
 
     const inputName = useRef(null);
     const textArea = useRef(null);
@@ -22,37 +18,22 @@ function PanelForm({ addFeedback }) {
 
     const { productId } = useParams();
 
-    const handleChange = (type) => (e) => {
-        setState({
-            ...state,
-            [type]: e.target.value
-        })
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault();
  
         addFeedback({
-            title: state.input,
-            type: state.select,
-            description: state.textarea
+            title: inputName.current.value,
+            type: select.current.value,
+            description:textArea.current.value
         }, productId);
-
-        setState({
-            textarea: '',
-            input: '',
-            select: 'Feature'
-        })
+        
+        navigate(`/products/${productId.toLowerCase()}`)
     }
 
     const handleCancel = (e) => {
         e.preventDefault();
-
-        setState({
-            textarea: '',
-            input: '',
-            select: 'Feature'
-        })
+        
+        navigate(`/products/${productId.toLowerCase()}`)
     }
 
   	return (
@@ -64,8 +45,6 @@ function PanelForm({ addFeedback }) {
                     <input 
                         required 
                         ref={inputName}
-                        value={state.input} 
-                        onChange={handleChange('input')} 
                         type="text" 
                         id="feedback-name" 
                         placeholder="Feedback's name"
@@ -77,8 +56,6 @@ function PanelForm({ addFeedback }) {
                         <select 
                             id="standard-select" 
                             ref={select} 
-                            onChange={handleChange('select')}
-                            value={state.select}
                         >
                             <option value="Feature">Feature</option>
                             <option value="UI">UI</option>
@@ -94,8 +71,6 @@ function PanelForm({ addFeedback }) {
                         <label htmlFor="feedback-description">Add description:</label><br/>
                         <textarea 
                             ref={textArea}
-                            value={state.textarea}
-                            onChange={handleChange('textarea')} 
                             id="feedback-description"
                             placeholder="Write description here..." 
                             maxLength='250' />
