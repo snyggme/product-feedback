@@ -884,6 +884,33 @@ div.go-back-button {
 	}
 }
 
+.liked-product-block {
+	display: inline-block;
+	background-color: #44597c;
+	padding: 5px 15px;
+	margin-left: 10px;
+	margin-bottom: 5px;
+
+	a {
+		text-decoration: none;
+		color: white;
+
+		&:hover {
+			color: black;
+		}
+	}
+
+	svg {
+		margin-left: 10px;
+		color: white;
+		cursor: pointer;
+
+		&:hover {
+			color: red;
+		}
+	}
+}
+
 
 
 

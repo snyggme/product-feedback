@@ -6,6 +6,7 @@ function Profile({ liked, username, deleteLike }) {
     return (
         <div>
             <div>Hello, {username}</div>
+            Liked products:  
             { liked.map(item => <LikedProduct productId={item} deleteLike={deleteLike} />) }
         </div>
     );

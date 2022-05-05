@@ -6,7 +6,7 @@ const iconStyle = {
     paddingRight: '5px'
 }
 
-function ProductItem({ name, description, addLike }) {
+function ProductItem({ name, description, addLike, tooltip }) {
     return (
         <div className="product-item">
             <div className="product-item-name">

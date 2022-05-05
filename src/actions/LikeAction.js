@@ -31,7 +31,20 @@ export const addLike = (productId) => {
 }
 
 export const deleteLike = (productId) => {
-    return dispatch => {
+    return (dispatch, getState) => {
+		const index = getState().likes.liked.findIndex(item => item === productId);;
 
+        dispatch({
+            type: DELETE_PRODUCT_LIKE,
+            payload: index
+        });
     }
+}
+
+export const clearTooltip = () => {
+	return dispatch => {
+		dispatch({
+			type: CLEAR_TOOLTIP
+		});
+	}
 }
