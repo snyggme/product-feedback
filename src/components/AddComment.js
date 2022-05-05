@@ -38,7 +38,7 @@ function AddComment({ postComment, username }) {
 
 const mapStateToProps = store => {
     return {
-        username: store.auth.username
+        username: store.auth.user.name
     }
 }
 

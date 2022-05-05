@@ -10,7 +10,11 @@ import {
 import auth from '../utils/auth';
 
 const initialState = {
-	username: '',
+	user: {
+		name: '',
+		city: '',
+		email: ''
+	},
 	isSigning: false,
 	// isSigned: auth.isSigned(),
 	isSigned: false,
@@ -20,12 +24,7 @@ const initialState = {
 export const authReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case LOGOUT:
-			return {
-				username: '',
-				error: null,
-				isSigning: false,
-				isSigned: false
-			}
+			return initialState;
 		case POST_USER_REQUEST:
 			return {
 				...state,
@@ -41,7 +40,10 @@ export const authReducer = (state = initialState, action) => {
 				...state,
 				isSigned: true,
 				isSigning: false,
-				username: action.payload.name
+				user: {
+					...state.user,
+					name: action.payload.name
+				}
 			};
 		case POST_USER_FAIL:
 			return {
@@ -66,7 +68,10 @@ export const authReducer = (state = initialState, action) => {
 				...state,
 				isSigned: true,
 				isSigning: false,
-				username: action.payload.name
+				user: {
+					...state.user,
+					name: action.payload.name
+				}
 			};
 		case SIGNIN_USER_FAIL:
 			return {

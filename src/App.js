@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { logout } from './actions/AuthAction';
 import Profile from './components/Profile';
 
-function App({ isSigned, username, logout }) {
+function App({ isSigned, logout }) {
 	const [ modal, setModal ] = useState({
 		show: false,
 		type: 'login'
@@ -41,7 +41,7 @@ function App({ isSigned, username, logout }) {
 
   	return (
 		<div>
-			<Navbar onClick={handleClick} isSigned={isSigned} username={username} />
+			<Navbar onClick={handleClick} isSigned={isSigned} />
 			{ modal.show && <Modal type={modal.type} setModal={setModal}/> }
 			<Routes>
 				<Route path='/' element={<Home handleHomeButton={handleHomeButton}/>} />
@@ -61,8 +61,7 @@ function App({ isSigned, username, logout }) {
 
 const mapStateToProps = store => {
     return {
-        isSigned: store.auth.isSigned,
-		username: store.auth.username
+        isSigned: store.auth.isSigned
     }
 }
 

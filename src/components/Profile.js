@@ -1,20 +1,31 @@
 import { connect } from 'react-redux';
+import LikedProduct from './LikedProduct';
+import { deleteLike } from '../actions/LikeAction';
 
-function Profile(props) {
+function Profile({ liked, username, deleteLike }) {
     return (
         <div>
-            Hello, {props.username}
+            <div>Hello, {username}</div>
+            { liked.map(item => <LikedProduct productId={item} deleteLike={deleteLike} />) }
         </div>
     );
 }
 
 const mapStateToProps = store => {
     return {
-        username: store.auth.username
+        username: store.auth.user.name,
+        liked: store.likes.liked
+    }
+}
+
+
+const mapDispatchToProps = dispatch => {
+    return {
+        deleteLike: (productId) => dispatch(deleteLike(productId))
     }
 }
 
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(Profile);

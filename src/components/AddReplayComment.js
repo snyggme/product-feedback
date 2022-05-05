@@ -38,7 +38,7 @@ function AddReplayComment({ id, commentUsername, username, setReplayKey, postCom
 
 const mapStateToProps = store => {
     return {
-        username: store.auth.username
+        username: store.auth.user.name
     }
 }
 

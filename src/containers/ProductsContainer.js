@@ -18,6 +18,7 @@ import {
     setReplayKey, 
     postComment 
 } from "../actions/CommentAction";
+import { addLike } from "../actions/LikeAction";
 
 function ProductsContainer(props) {
     useEffect(() => {
@@ -67,7 +68,8 @@ const mapDispatchToProps = dispatch => {
         setReplayKey: (key) => dispatch(setReplayKey(key)),
         postComment: (comment, username, messageId) => dispatch(postComment(comment, username, messageId)),
         addUpvote: (name, id) => dispatch(addUpvote(name, id)),
-        addFeedback: (feedback, productId) => dispatch(addFeedback(feedback, productId))
+        addFeedback: (feedback, productId) => dispatch(addFeedback(feedback, productId)),
+        addLike: (productId) => dispatch(addLike(productId))
     }
 }
 

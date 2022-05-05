@@ -1,10 +1,10 @@
 import ProductItem from './ProductItem';
 
-function Products({ products: { items } }) {
+function Products({ products: { items }, addLike }) {
     return (
         <div className='products-container'>
             {
-                items.map(item => (<ProductItem {...item} key={item.name}/>))
+                items.map(item => (<ProductItem {...item} addLike={addLike} key={item.name}/>))
             }
         </div>
     )

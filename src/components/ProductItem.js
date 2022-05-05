@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAdd, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faAdd, faEye, faHeartCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
 const iconStyle = {
     paddingRight: '5px'
 }
 
-function ProductItem({ name, description }) {
+function ProductItem({ name, description, addLike }) {
     return (
         <div className="product-item">
-            <div className="product-item-name"><b>Product: </b>{name}</div>
+            <div className="product-item-name">
+                <b>Product: {name}</b>
+                <FontAwesomeIcon icon={faHeartCirclePlus} style={iconStyle} onClick={() => addLike(name.toLowerCase())} />
+            </div>
             <div className="product-item-desc">{description}</div>
             <div className="product-item-link">
                 <div>                
