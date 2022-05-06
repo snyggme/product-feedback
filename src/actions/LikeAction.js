@@ -13,7 +13,7 @@ export const addLike = (productId) => {
                 payload: {
                     like: productId,
                     message: {
-                        productId,
+                        likedProductId: productId,
                         text: 'Like added!'
                     } 
                 }
@@ -22,7 +22,7 @@ export const addLike = (productId) => {
             dispatch({
                 type: ADD_PRODUCT_LIKE_FAIL,
                 payload: {
-                    productId,
+                    likedProductId: productId,
                     text: 'Like already exists. See profile.'
                 }
             });

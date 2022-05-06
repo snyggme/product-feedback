@@ -1,6 +1,6 @@
 import CommentsItem from "./CommentsItem";
 
-function CommentSection({ comments: { flatten, replayKey }, setReplayKey }) {
+function CommentSection({ flatten, replayKey, setReplayKey }) {
     return (
         <div className='feedback-comments-all-msgs'> 
             {flatten.map((comment, i) => 

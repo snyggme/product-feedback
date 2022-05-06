@@ -6,12 +6,22 @@ const iconStyle = {
     paddingRight: '5px'
 }
 
-function ProductItem({ name, description, addLike, tooltip }) {
+function ProductItem({ name, description, addLike, tooltip, tooltipText, clearTooltip }) {
+
+    const handleLikeButton = () => {
+        addLike(name.toLowerCase())
+
+        setTimeout(() => {
+			clearTooltip();
+		}, 1200);
+    }
+
     return (
         <div className="product-item">
             <div className="product-item-name">
                 <b>Product: {name}</b>
-                <FontAwesomeIcon icon={faHeartCirclePlus} style={iconStyle} onClick={() => addLike(name.toLowerCase())} />
+                <FontAwesomeIcon icon={faHeartCirclePlus} style={iconStyle} onClick={handleLikeButton} />
+                { tooltip && <span className="tooltip">{tooltipText}</span>}
             </div>
             <div className="product-item-desc">{description}</div>
             <div className="product-item-link">

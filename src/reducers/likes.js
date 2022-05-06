@@ -9,7 +9,7 @@ const initialState = {
 	liked: [],
 	message: { 
 		text: '',
-		productId: null
+		likedProductId: null
 	},
 	tooltip: false
 };
@@ -24,7 +24,7 @@ export const likesReducer = (state = initialState, action) => {
                 ],
                 message: {
                     text: action.payload.message.text,
-                    productId: action.payload.message.productId
+                    likedProductId: action.payload.message.likedProductId
                 },
                 tooltip: true
 			};
@@ -33,7 +33,7 @@ export const likesReducer = (state = initialState, action) => {
                 ...state,
                 message: {
                     text: action.payload.text,
-                    productId: action.payload.productId
+                    likedProductId: action.payload.likedProductId
                 },
                 tooltip: true
             };
@@ -51,7 +51,7 @@ export const likesReducer = (state = initialState, action) => {
                 ...state,
                 message: {
                     text: '',
-                    productId: null
+                    likedProductId: null
                 },
                 tooltip: false
             }

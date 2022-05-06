@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBan } from '@fortawesome/free-solid-svg-icons';
 
-const LikedProduct = ({ productId, deleteLike }) => {
+const LikedProduct = ({ productId, deleteLike  }) => {
 	return (
-		<div key={productId} className='liked-product-block'>
+		<div className='liked-product-block'>
 			<Link to={`/products/${productId}`}>
 				{productId}
 			</Link>

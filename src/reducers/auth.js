@@ -12,8 +12,8 @@ import auth from '../utils/auth';
 const initialState = {
 	user: {
 		name: '',
-		city: '',
-		email: ''
+		city: 'Default City',
+		email: 'Default Email'
 	},
 	isSigning: false,
 	// isSigned: auth.isSigned(),

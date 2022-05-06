@@ -41,7 +41,7 @@ function App({ isSigned, logout }) {
 
   	return (
 		<div>
-			<Navbar onClick={handleClick} isSigned={isSigned} />
+			<Navbar handleClick={handleClick} isSigned={isSigned} />
 			{ modal.show && <Modal type={modal.type} setModal={setModal}/> }
 			<Routes>
 				<Route path='/' element={<Home handleHomeButton={handleHomeButton}/>} />
