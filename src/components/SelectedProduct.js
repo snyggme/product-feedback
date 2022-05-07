@@ -1,29 +1,13 @@
-import { useParams } from 'react-router-dom';
-import { getProduct } from '../utils/products';
-import { connect } from 'react-redux';
 
-function SelectedProduct({ products }) {
-    const { productId } = useParams();
-    const { name, description } = getProduct(products, productId);
-
+function SelectedProduct({ name, description }) {
   	return (
         <div className='selected-product'>
             <div className="name">
-                <div>
-                    <b>Product: </b><br/>{name}</div>
-                </div>
+                <div><b>Product: </b><br/>{name}</div>
+            </div>
             <div className="desc">{description}</div>
         </div>
   	);
 }
 
-const mapStateToProps = store => {
-    return {
-        products: store.products.items
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    null
-)(SelectedProduct);
+export default SelectedProduct;

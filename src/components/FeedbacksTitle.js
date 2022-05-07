@@ -42,7 +42,7 @@ function FeedbacksTitle({ titleNumber, setFilter, activeFilter }) {
                 </span>
             </div>  
             <button className='feedbacks-items-title-add-btn' 
-                onClick={() => navigate(`/products/${productId.toLowerCase()}/add`)}>
+                onClick={() => navigate(`/products/add`, { state: { from: productId.toLowerCase()} })}>
                     + Add Feedback
             </button>
         </div>

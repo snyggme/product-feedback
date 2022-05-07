@@ -7,7 +7,7 @@ function CommentTitle({ productId }) {
     return (
         <div className='feedback-comments-edit-panel'>
             <BackButton to={`/products/${productId}`} />
-            <button onClick={() => navigate(`/products/${productId.toLowerCase()}/add`)}>
+            <button onClick={() => navigate(`/products/add`, { state: { from: productId.toLowerCase()} })}>
                 + Add feedback
             </button>
         </div>

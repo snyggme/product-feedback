@@ -27,7 +27,7 @@ function ProductItem({ name, description, addLike, tooltip, tooltipText, clearTo
             <div className="product-item-link">
                 <div>                
                     <FontAwesomeIcon icon={faAdd} style={iconStyle}/>
-                    <Link className='element-underline-width' to={`/products/${name.toLowerCase()}/add`}>
+                    <Link className='element-underline-width' to={`/products/add`} state={{ from: name.toLowerCase() }}>
                         Add feedback
                     </Link>
                 </div>

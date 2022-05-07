@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAdd, faCancel } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
@@ -9,23 +9,21 @@ const iconStyle = {
     paddingRight: '10px'
 }
 
-function PanelForm({ addFeedback }) {
+function PanelForm({ addFeedback, productId }) {
     let navigate = useNavigate();
 
     const inputName = useRef(null);
     const textArea = useRef(null);
     const select = useRef(null);
 
-    const { productId } = useParams();
-
     const handleSubmit = (e) => {
         e.preventDefault();
- 
+        
         addFeedback({
             title: inputName.current.value,
             type: select.current.value,
             description:textArea.current.value
-        }, productId);
+        }, productId.toLowerCase());
         
         navigate(`/products/${productId.toLowerCase()}`)
     }
