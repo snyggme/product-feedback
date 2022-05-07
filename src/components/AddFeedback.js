@@ -5,7 +5,7 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
 import { getProduct } from '../utils/products';
 import { connect } from 'react-redux';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 function AddFeedback({ products }) {
     let location = useLocation();
@@ -17,7 +17,22 @@ function AddFeedback({ products }) {
         return { name, description, index }
     })
 
+    const selpr = useRef(null);
+
     const handleClick = (arrow) => () => {
+        if (selpr.current.style.animation.length > 0)
+            return
+
+        if (arrow === 'right') {
+            selpr.current.style.animation = 'fromleft 350ms linear';
+        } else {
+            selpr.current.style.animation = 'fromright 350ms linear'
+        }
+        
+        setTimeout(() => {
+            selpr.current.style.animation = ''
+        }, 350)
+
         let index;
 
         if (arrow === 'right') {
@@ -44,7 +59,7 @@ function AddFeedback({ products }) {
             <div className='carousel-arrow-left'>
                 <FontAwesomeIcon icon={faArrowLeft} onClick={handleClick('left')} />
             </div>
-            <SelectedProduct name={state.name} description={state.description} />
+            <SelectedProduct ref={selpr} name={state.name} description={state.description} />
             <div className='carousel-arrow-right'>
                 <FontAwesomeIcon icon={faArrowRight} onClick={handleClick('right')} />
             </div>

@@ -723,7 +723,7 @@ div.go-back-button {
 .add-feedback-panel {
 	display: grid;
 	grid-template-columns: 1fr minmax(200px, 1000px) 1fr;
-	grid-template-rows: minmax(150px, auto) 1fr;
+	grid-template-rows: minmax(200px, auto) 1fr;
 	padding-bottom: 50px;
 
 	.carousel-arrow-left, .carousel-arrow-right {
@@ -1066,6 +1066,26 @@ div.go-back-button {
 @keyframes appeare {
 	from {top: 100px; opacity: 0}
 	to {top: -30px; opacity: 1}
+ }
+  
+ @-webkit-keyframes fromleft {
+	from {left: -400px; opacity: 0}
+	to {left: 0px; opacity: 1}
+}
+
+@keyframes fromleft {
+	from {left: -400px; opacity: 0}
+	to {left: 0px; opacity: 1}
+ }
+
+ @-webkit-keyframes fromright {
+	from {right: -400px; opacity: 0}
+	to {right: 0px; opacity: 1}
+}
+
+@keyframes fromright {
+	from {right: -400px; opacity: 0}
+	to {right: 0px; opacity: 1}
  }
   
 

@@ -1,13 +1,16 @@
+import { forwardRef } from "react";
 
-function SelectedProduct({ name, description }) {
+const SelectedProduct = forwardRef((props, ref) => {
   	return (
-        <div className='selected-product'>
-            <div className="name">
-                <div><b>Product: </b><br/>{name}</div>
+            <div style={{position: 'relative', marginBottom: '50px', minHeight: '150px' }} >
+                <div className='selected-product' ref={ref} style={{position: 'absolute', width: '100%', minHeight: '200px'}} >
+                    <div className="name">
+                        <div><b>Product: </b><br/>{props.name}</div>
+                    </div>
+                    <div className="desc">{props.description}</div>
+                </div>
             </div>
-            <div className="desc">{description}</div>
-        </div>
   	);
-}
+})
 
 export default SelectedProduct;
