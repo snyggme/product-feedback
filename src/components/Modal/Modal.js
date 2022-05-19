@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { createUser, signinUser } from '../actions/AuthAction';
-import SignForm from "./SignForm";
+import { createUser, signinUser } from '../../actions/AuthAction';
+import SignForm from "../SignForm/SignForm";
 
 function Modal(props) {
     const { type, setModal } = props;

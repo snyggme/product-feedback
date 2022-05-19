@@ -1,14 +1,16 @@
 import ProductItem from './ProductItem';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { addLike, clearTooltip } from "../actions/LikeAction";
-import { catchProducts } from "../actions/ProductAction";
+import { addLike, clearTooltip } from "../../actions/LikeAction";
+import { catchProducts } from "../../actions/ProductAction";
 
-function Products({ 
-    products: { items, isLoading }, 
-    catchProducts, addLike, clearTooltip, 
-    likes: { tooltip, message: { text, likedProductId } } 
-}) {
+function Products(props) {
+    const { 
+        products: { items, isLoading }, 
+        catchProducts, addLike, clearTooltip, 
+        likes: { tooltip, message: { text, likedProductId } } 
+    } = props;
+
     useEffect(() => {
         catchProducts();
     }, [])

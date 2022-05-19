@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import LikedProduct from './LikedProduct';
-import { deleteLike } from '../actions/LikeAction';
+import { deleteLike } from '../../actions/LikeAction';
 
 function Profile({ liked, deleteLike, user: { name, email, city } }) {
     return (

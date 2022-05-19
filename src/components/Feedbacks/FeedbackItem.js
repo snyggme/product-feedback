@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { calculateLength } from '../utils/products';
+import { calculateLength } from '../../utils/products';
 
 function FeedbackItem({ id, title, votes, comments, type, description, productId, addUpvote }) {
     const len = calculateLength(comments);

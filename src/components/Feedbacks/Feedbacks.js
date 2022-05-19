@@ -11,7 +11,7 @@ import {
     setActiveFeedbacks, 
     getFilteredFeedbacks,
     addUpvote
-} from '../actions/FeedbackAction';
+} from '../../actions/FeedbackAction';
 
 function Feedbacks({
     feedbacks: { filtered, active, filter, isLoading },

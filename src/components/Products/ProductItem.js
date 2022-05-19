@@ -7,13 +7,12 @@ const iconStyle = {
 }
 
 function ProductItem({ name, description, addLike, tooltip, tooltipText, clearTooltip }) {
-
     const handleLikeButton = () => {
         addLike(name.toLowerCase())
-
-        setTimeout(() => {
-			clearTooltip();
-		}, 1200);
+        clearTooltip();
+        // setTimeout(() => {
+            
+        // }, 1200);
     }
 
     return (

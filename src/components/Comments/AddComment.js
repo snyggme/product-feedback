@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { postComment } from "../actions/CommentAction";
+import { postComment } from "../../actions/CommentAction";
 
 const MAX_LEFT_CHARS = 250;
 

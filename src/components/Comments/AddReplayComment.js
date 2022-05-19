@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { 
     setReplayKey, 
     postComment 
-} from "../actions/CommentAction";
+} from "../../actions/CommentAction";
 
 function AddReplayComment({ id, commentUsername, username, setReplayKey, postComment }) {
     const [text, setText] = useState(`@${commentUsername}, `);

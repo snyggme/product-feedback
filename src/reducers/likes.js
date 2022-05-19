@@ -2,7 +2,8 @@ import {
     ADD_PRODUCT_LIKE,
     ADD_PRODUCT_LIKE_FAIL,
     DELETE_PRODUCT_LIKE,
-    CLEAR_TOOLTIP
+    CLEAR_TOOLTIP,
+    CLEAR_LIKES
 } from '../actions/LikeAction';
 
 const initialState = {
@@ -55,6 +56,8 @@ export const likesReducer = (state = initialState, action) => {
                 },
                 tooltip: false
             }
+        case CLEAR_LIKES: 
+            return initialState
  		default:
 			return state;
 	}

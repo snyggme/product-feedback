@@ -1,5 +1,6 @@
 import auth, { addUser, getUser } from '../utils/auth';
 import { getBackendToken } from '../utils/network';
+import { CLEAR_LIKES } from './LikeAction';
 
 export const LOGOUT = 'LOGOUT';
 
@@ -20,6 +21,9 @@ export const logout = () => {
 	// 	});
 	// } 
 	return dispatch => {
+		dispatch({
+			type: CLEAR_LIKES
+		});
 
 		dispatch({
 			type: LOGOUT

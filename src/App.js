@@ -1,12 +1,12 @@
 import { useEffect, useState} from 'react';
-import Modal from './components/Modal';
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
+import Modal from './components/Modal/Modal';
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./components/Home/Home";
 import ProductsContainer from "./containers/ProductsContainer";
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from './actions/AuthAction';
-import Profile from './components/Profile';
+import Profile from './components/Profile/Profile';
 
 function App({ isSigned, logout }) {
 	const [ modal, setModal ] = useState({

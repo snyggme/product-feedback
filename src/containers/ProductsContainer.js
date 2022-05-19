@@ -1,7 +1,7 @@
-import Products from "../components/Products";
-import Feedbacks from "../components/Feedbacks";
-import Comments from "../components/Comments";
-import AddFeedback from "../components/AddFeedback";
+import Products from "../components/Products/Products";
+import Feedbacks from "../components/Feedbacks/Feedbacks";
+import Comments from "../components/Comments/Comments";
+import AddFeedback from "../components/AddFeedbackPanel/AddFeedbackPanel";
 import { Route, Routes } from 'react-router-dom';
 
 function ProductsContainer() {       

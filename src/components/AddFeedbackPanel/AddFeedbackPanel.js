@@ -1,13 +1,13 @@
 import SelectedProduct from './SelectedProduct';
-import PanelForm from './PanelForm';
+import PanelForm from '../PanelForm/PanelForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
-import { getProduct } from '../utils/products';
+import { getProduct } from '../../utils/products';
 import { connect } from 'react-redux';
 import { useRef, useState } from 'react';
 
-function AddFeedback({ products }) {
+function AddFeedbackPanel({ products }) {
     let location = useLocation();
 
     const [ state, setState ] = useState(() => {
@@ -77,4 +77,4 @@ const mapStateToProps = store => {
 export default connect(
     mapStateToProps,
     null
-)(AddFeedback);
+)(AddFeedbackPanel);

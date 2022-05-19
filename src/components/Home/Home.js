@@ -1,4 +1,4 @@
-import manager from '../assets/sticker.png';
+import manager from '../../assets/sticker.png';
 
 function Home({ handleHomeButton }) {
 

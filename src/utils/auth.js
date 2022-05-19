@@ -13,11 +13,7 @@ class Auth {
 
         sessionStorage.setItem('user', JSON.stringify(user));
     }
-    signout() {
-        const auth2 = window.gapi.auth2.getAuthInstance()
-
-        auth2.signOut();
-        
+    signout() {        
         delete sessionStorage['user'];
     }
     isSigned() {
@@ -38,14 +34,6 @@ class Auth {
         const { _id } = JSON.parse(sessionStorage.getItem('user'));
 
         return _id;
-    }
-    getGoogleToken() {
-        if (!this.isSigned())
-            return null
-
-        const { googleToken } = JSON.parse(sessionStorage.getItem('user'));
-
-        return googleToken;
     }
     getBackendToken() {
         if (!this.isSigned())
