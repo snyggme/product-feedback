@@ -725,6 +725,7 @@ div.go-back-button {
 	grid-template-columns: 1fr minmax(200px, 1000px) 1fr;
 	grid-template-rows: minmax(200px, auto) 1fr;
 	padding-bottom: 50px;
+	overflow-x: hidden;
 
 	.carousel-arrow-left, .carousel-arrow-right {
 		font-size: 40px;
@@ -761,7 +762,7 @@ div.go-back-button {
 		display: flex;
 		flex-direction: row;
 		gap: 70px;
-		border: 2px solid black;
+		border: 2px solid #3498db;
 		padding: 20px 40px;
 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.1);
 		min-height: 150px;
@@ -769,7 +770,7 @@ div.go-back-button {
 		.name {
 			flex: 1;
 			text-align: center;
-			border-right: 2px solid #751692;
+			border-right: 2px solid #3498db;
 			display: grid;
 			justify-content: center;
 			align-items: center;
@@ -1069,23 +1070,42 @@ div.go-back-button {
  }
   
  @-webkit-keyframes fromleft {
-	from {left: -400px; opacity: 0}
+	from {left: -1200px; opacity: 0}
 	to {left: 0px; opacity: 1}
 }
 
 @keyframes fromleft {
-	from {left: -400px; opacity: 0}
+	from {left: -1200px; opacity: 0}
 	to {left: 0px; opacity: 1}
  }
 
  @-webkit-keyframes fromright {
-	from {right: -400px; opacity: 0}
+	from {right: -1200px; opacity: 0}
 	to {right: 0px; opacity: 1}
 }
 
 @keyframes fromright {
-	from {right: -400px; opacity: 0}
+	from {right: -1200px; opacity: 0}
 	to {right: 0px; opacity: 1}
- }
+}
   
+ @-webkit-keyframes appear-to-right {
+	from {left: 0px; opacity: 1}
+	to {left: 1000px; opacity: 0}
+}
+
+@keyframes appear-to-right {
+	from {left: 0px; opacity: 1}
+	to {left: 1000px; opacity: 0}
+}
+
+@-webkit-keyframes appear-to-left {
+	from {right: 0px; opacity: 1}
+	to {right: 1000px; opacity: 0}
+}
+
+@keyframes appear-to-left {
+	from {right: 0px; opacity: 1}
+	to {right: 1000px; opacity: 0}
+}
 

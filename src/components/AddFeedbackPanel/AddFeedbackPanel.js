@@ -1,7 +1,7 @@
 import SelectedProduct from './SelectedProduct';
 import PanelForm from '../PanelForm/PanelForm';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import CarouselArrow from './CarouselArrow';
+
 import { useLocation } from 'react-router-dom';
 import { getProduct } from '../../utils/products';
 import { connect } from 'react-redux';
@@ -13,26 +13,35 @@ function AddFeedbackPanel({ products }) {
     const [ state, setState ] = useState(() => {
         const { name, description } = getProduct(products, location.state.from);
         const index = products.findIndex(product => product.name === name)
-
-        return { name, description, index }
+        const prevProduct = { name, description };
+        
+        return { name, description, index, prevProduct }
     })
 
     const selpr = useRef(null);
+    const hidden = useRef(null);
 
     const handleClick = (arrow) => () => {
         if (selpr.current.style.animation.length > 0)
             return
 
         if (arrow === 'right') {
-            selpr.current.style.animation = 'fromleft 350ms linear';
+            selpr.current.style.animation = 'fromleft 600ms linear';
+            hidden.current.style.animation = 'appear-to-right 600ms linear';
         } else {
-            selpr.current.style.animation = 'fromright 350ms linear'
+            selpr.current.style.animation = 'fromright 600ms linear'
+            hidden.current.style.animation = 'appear-to-left 600ms linear';
         }
         
         setTimeout(() => {
-            selpr.current.style.animation = ''
-        }, 350)
+            selpr.current.style.animation = '';
+            hidden.current.style.animation = '';
+        }, 600)
 
+        const prevProduct = {
+            name: state.name,
+            description: state.description
+        }
         let index;
 
         if (arrow === 'right') {
@@ -51,18 +60,20 @@ function AddFeedbackPanel({ products }) {
 
         const { name, description } = products[index];
 
-        setState({ name, description, index })
+        setState({ name, description, index, prevProduct })
     }
 
   	return (
         <div className='add-feedback-panel'>
-            <div className='carousel-arrow-left'>
-                <FontAwesomeIcon icon={faArrowLeft} onClick={handleClick('left')} />
-            </div>
-            <SelectedProduct ref={selpr} name={state.name} description={state.description} />
-            <div className='carousel-arrow-right'>
-                <FontAwesomeIcon icon={faArrowRight} onClick={handleClick('right')} />
-            </div>
+            <CarouselArrow direction='left' handleClick={handleClick} />
+            <SelectedProduct 
+                ref={selpr} 
+                hiddenRef={hidden}
+                name={state.name} 
+                description={state.description} 
+                prevProduct={state.prevProduct} 
+            />
+            <CarouselArrow direction='right' handleClick={handleClick} />
             <PanelForm productId={state.name} />
         </div>
   	);

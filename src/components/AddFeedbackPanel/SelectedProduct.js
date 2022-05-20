@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import HiddenProduct from './HiddenProduct';
 
 const SelectedProduct = forwardRef((props, ref) => {
   	return (
@@ -9,6 +10,7 @@ const SelectedProduct = forwardRef((props, ref) => {
                     </div>
                     <div className="desc">{props.description}</div>
                 </div>
+                <HiddenProduct ref={props.hiddenRef} name={props.prevProduct.name} description={props.prevProduct.description} />
             </div>
   	);
 })
