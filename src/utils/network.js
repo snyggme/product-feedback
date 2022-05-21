@@ -12,7 +12,7 @@ import auth from './auth';
 
 export let cachedFeeds = false;
 
-const API_ROOT = 'http://localhost:5000/api/v1';
+const API_ROOT = 'http://localhost:3001';
 
 // export const httpGetFeeds = async (dispatch) => {
 //     try {
@@ -130,7 +130,7 @@ const API_ROOT = 'http://localhost:5000/api/v1';
 // }
 
 export const getBackendToken = async (...args) => {  
-    const { dispatch, body, endpoint, success, fail } = args;
+    const [ dispatch, body, endpoint, success, fail ] = args;
     try {
         const response = await fetch(`${API_ROOT}${endpoint}`, {  
             method: 'POST',
@@ -150,6 +150,37 @@ export const getBackendToken = async (...args) => {
                     token: json.token,
                     username: body.username
                 }
+            })
+        } else {
+            throw new Error(response.status);            
+        }
+    } catch (e) {
+        dispatch({
+            type: fail,
+            payload: new Error(e).message
+        })
+    }
+}
+
+export const getUser = async (...args) => {
+    const [ dispatch, body, endpoint, success, fail ] = args;
+
+    try {
+        const response = await fetch(`${API_ROOT}${endpoint}`, {  
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+
+        if (response.ok) {
+            const user = await response.json();
+
+            dispatch({
+                type: success,
+                payload: user
             })
         } else {
             throw new Error(response.status);            

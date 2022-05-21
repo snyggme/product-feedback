@@ -12,8 +12,8 @@ import auth from '../utils/auth';
 const initialState = {
 	user: {
 		name: '',
-		city: 'Default City',
-		email: 'Default Email'
+		city: '',
+		email: ''
 	},
 	isSigning: false,
 	// isSigned: auth.isSigned(),
@@ -35,14 +35,15 @@ export const authReducer = (state = initialState, action) => {
 			// 	token: action.payload.token,
 			// 	username: action.payload.username
 			// });
-			
+
 			return {
 				...state,
 				isSigned: true,
 				isSigning: false,
 				user: {
-					...state.user,
-					name: action.payload.name
+					name: action.payload.name,
+					email: action.payload.email,
+					city: action.payload.city
 				}
 			};
 		case POST_USER_FAIL:
@@ -63,14 +64,15 @@ export const authReducer = (state = initialState, action) => {
 			// 	token: action.payload.token,
 			// 	username: action.payload.username
 			// });
-			
+
 			return {
 				...state,
 				isSigned: true,
 				isSigning: false,
-				user: {
-					...state.user,
-					name: action.payload.name
+				user: { 					
+					name: action.payload.name,
+					email: action.payload.email,
+					city: action.payload.city
 				}
 			};
 		case SIGNIN_USER_FAIL:
