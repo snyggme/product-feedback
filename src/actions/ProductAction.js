@@ -1,7 +1,8 @@
 import { 
-	cachedFeeds 
+	cachedProducts,
+	httpGetProducts 
 } from '../utils/network';
-import { getProducts, addFeedbackToProduct } from '../utils/products';
+import { addFeedbackToProduct } from '../utils/products';
 
 export const GET_PRODUCTS_REQUEST = 'GET_PRODUCTS_REQUEST';
 export const GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS';
@@ -23,22 +24,12 @@ export const ADD_FEEDBACK_TO_PRODUCT = 'ADD_FEEDBACK_TO_PRODUCT';
 
 export const catchProducts = () => {
 	return dispatch => {
-		if (!cachedFeeds) {	
+		if (!cachedProducts) {	
 			dispatch({
 				type: GET_PRODUCTS_REQUEST
 			});
 
-			try {
-				dispatch({
-					type: GET_PRODUCTS_SUCCESS,
-					payload: getProducts()
-				})
-			} catch (e) {
-				dispatch({
-					type: GET_PRODUCTS_FAIL,
-					payload: new Error(e).message
-				})
-			}
+			httpGetProducts(dispatch);
 		} 
 	}
 }

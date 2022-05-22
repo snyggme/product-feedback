@@ -11,7 +11,7 @@ function Products(props) {
         likes: { tooltip, message: { text, likedProductId } } 
     } = props;
 
-    useEffect(() => {
+    useEffect(() => {  
         catchProducts();
     }, [])
 

@@ -1,16 +1,9 @@
-// import { 
-//     GET_FEEDS_SUCCESS,
-//     GET_FEEDS_FAIL,
-//     POST_FEED_SUCCESS,
-//     POST_FEED_FAIL,
-//     PUT_FEED_SUCCESS,
-//     PUT_FEED_FAIL,
-//     DELETE_FEED_SUCCESS,
-//     DELETE_FEED_FAIL
-// } from '../actions/FeedsAction';
-import auth from './auth';
+import { 
+    GET_PRODUCTS_SUCCESS,
+    GET_PRODUCTS_FAIL
+} from '../actions/ProductAction';
 
-export let cachedFeeds = false;
+export let cachedProducts = false;
 
 const API_ROOT = 'http://localhost:3001';
 
@@ -129,38 +122,38 @@ const API_ROOT = 'http://localhost:3001';
 //     }
 // }
 
-export const getBackendToken = async (...args) => {  
-    const [ dispatch, body, endpoint, success, fail ] = args;
-    try {
-        const response = await fetch(`${API_ROOT}${endpoint}`, {  
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        });
+// export const getBackendToken = async (...args) => {  
+//     const [ dispatch, body, endpoint, success, fail ] = args;
+//     try {
+//         const response = await fetch(`${API_ROOT}${endpoint}`, {  
+//             method: 'POST',
+//             mode: 'cors',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify(body)
+//         });
 
-        if (response.ok) {
-            const json = await response.json();
+//         if (response.ok) {
+//             const json = await response.json();
 
-            dispatch({
-                type: success,
-                payload: {
-                    token: json.token,
-                    username: body.username
-                }
-            })
-        } else {
-            throw new Error(response.status);            
-        }
-    } catch (e) {
-        dispatch({
-            type: fail,
-            payload: new Error(e).message
-        })
-    }
-}
+//             dispatch({
+//                 type: success,
+//                 payload: {
+//                     token: json.token,
+//                     username: body.username
+//                 }
+//             })
+//         } else {
+//             throw new Error(response.status);            
+//         }
+//     } catch (e) {
+//         dispatch({
+//             type: fail,
+//             payload: new Error(e).message
+//         })
+//     }
+// }
 
 export const getUser = async (...args) => {
     const [ dispatch, body, endpoint, success, fail ] = args;
@@ -188,6 +181,30 @@ export const getUser = async (...args) => {
     } catch (e) {
         dispatch({
             type: fail,
+            payload: new Error(e).message
+        })
+    }
+}
+
+export const httpGetProducts = async (dispatch) => {
+    try {
+        const response = await fetch(`${API_ROOT}/products`);
+
+        if (response.ok) {
+            const products = await response.json();
+        
+            cachedProducts = true;
+
+            dispatch({
+                type: GET_PRODUCTS_SUCCESS,
+                payload: products
+            })
+        } else {
+            throw new Error(response.status);
+        }
+    } catch (e) {
+        dispatch({
+            type: GET_PRODUCTS_FAIL,
             payload: new Error(e).message
         })
     }

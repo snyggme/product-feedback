@@ -6,6 +6,7 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const products = require('./controllers/products');
 
+
 const db = [ { name: 'bob', email: 'bob@gmail.com', hash: bcrypt.hashSync('123', 8), city: 'Saint-Petersburg' } ]
 
 // const db = require('knex')({

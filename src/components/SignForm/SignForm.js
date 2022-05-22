@@ -19,7 +19,7 @@ function SignForm({ type, setModal, signinUser, createUser, auth }) {
 
         if (type === 'login') {
             const user = {
-                email: inputName.current.value,
+                email: inputEmail.current.value,
                 password: inputPass.current.value
             }
 
@@ -48,26 +48,26 @@ function SignForm({ type, setModal, signinUser, createUser, auth }) {
     return (
         <div>
             <form id='sign-form' onSubmit={handleSubmit}>
-                <input 
-                    required 
-                    ref={inputName}
-                    type="name" 
-                    id="name" 
-                    placeholder="Username"
-                />
                 {
                     type === 'signup' 
                     ? (
                         <input 
                             required 
-                            ref={inputEmail}
-                            type="email" 
-                            id="email" 
-                            placeholder="E-mail" 
+                            ref={inputName}
+                            type="name" 
+                            id="name" 
+                            placeholder="Name"
                         />
                     )
                     : ''
                 }
+                <input 
+                    required 
+                    ref={inputEmail}
+                    type="email" 
+                    id="email" 
+                    placeholder="E-mail" 
+                />
                 <input 
                     required 
                     ref={inputPass}

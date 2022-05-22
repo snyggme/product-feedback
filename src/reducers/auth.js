@@ -7,7 +7,6 @@ import {
     SIGNIN_USER_SUCCESS,
     SIGNIN_USER_FAIL
 } from '../actions/AuthAction';
-import auth from '../utils/auth';
 
 const initialState = {
 	user: {
