@@ -13,16 +13,16 @@ function PanelForm({ addFeedback, productId }) {
     const textArea = useRef(null);
     const select = useRef(null);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         
-        addFeedback({
+        const id = await addFeedback({
             title: inputName.current.value,
             type: select.current.value,
             description:textArea.current.value
         }, productId.toLowerCase());
-        
-        navigate(`/products/${productId.toLowerCase()}`)
+
+        navigate(`/products/${id}`)
     }
 
     const handleCancel = (e) => {

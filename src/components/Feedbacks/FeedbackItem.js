@@ -9,7 +9,7 @@ function FeedbackItem({ id, title, votes, comments, type, description, productId
     return (
         <div className='feedbacks-item'>
             <div className='feedbacks-item-upvotes'>
-                <div onClick={() => addUpvote(id)}>
+                <div onClick={() => addUpvote(id, productId)}>
                     <i className="arrow-up"></i><div>{votes}</div>
                 </div>
             </div>

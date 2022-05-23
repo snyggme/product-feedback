@@ -1,7 +1,10 @@
 import { 
     GET_PRODUCTS_SUCCESS,
-    GET_PRODUCTS_FAIL
+    GET_PRODUCTS_FAIL,
+    POST_FEEDBACK_TO_PRODUCT_SUCCESS,
+    POST_FEEDBACK_TO_PRODUCT_FAIL
 } from '../actions/ProductAction';
+import { addUpvoteToFeedback, addFeedbackToProduct } from '../utils/products';
 
 export let cachedProducts = false;
 
@@ -205,6 +208,77 @@ export const httpGetProducts = async (dispatch) => {
     } catch (e) {
         dispatch({
             type: GET_PRODUCTS_FAIL,
+            payload: new Error(e).message
+        })
+    }
+}
+
+export const httpPutAddUpvotes = async (...args) => {
+    const [ dispatch, getState, id, productId, success, fail ] = args;
+
+    try {
+        const response = await fetch(`${API_ROOT}/add-upvote/${id}`, {  
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ productId })
+        });
+        if (response.ok) {
+            // const feedback = await response.json();
+   
+            const { feedbacks: { items, filtered } } = getState();
+
+            dispatch({
+                type: success, 
+                payload: {
+                    items: addUpvoteToFeedback(id, items),
+                    filtered: addUpvoteToFeedback(id, filtered)
+                }
+            });
+        } else {
+            throw new Error(response.status);
+        }
+    } catch (e) {
+        dispatch({
+            type: fail,
+            payload: new Error(e).message
+        })
+    }
+}
+
+
+export const httpPostProductFeedback = async (dispatch, getState, feedback, productId) => {
+    try {
+        const response = await fetch(`${API_ROOT}/add-feedback`, {  
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ feedback, productId })
+        });
+
+        if (response.ok) {
+            const json = await response.json();
+
+            const { products: { items } } = getState();
+            
+            dispatch({
+                type: POST_FEEDBACK_TO_PRODUCT_SUCCESS,
+                // leave it like that until data are received not from server
+                // should not add feedback on front side
+                payload: addFeedbackToProduct(items, feedback, productId)
+            })
+
+            return json.id
+        } else {
+            throw new Error(response.status);            
+        }
+    } catch (e) {
+        dispatch({
+            type: POST_FEEDBACK_TO_PRODUCT_FAIL,
             payload: new Error(e).message
         })
     }

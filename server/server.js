@@ -5,7 +5,7 @@ const cors = require('cors');
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const products = require('./controllers/products');
-
+const upvotes = require('./controllers/upvotes');
 
 const db = [ { name: 'bob', email: 'bob@gmail.com', hash: bcrypt.hashSync('123', 8), city: 'Saint-Petersburg' } ]
 
@@ -30,7 +30,9 @@ app.use(cors());
 app.get('/', (req, res) => { res.send(db) });
 app.post('/signin', signin.handleSignin(db, bcrypt));
 app.post('/register', register.handleRegister(db, bcrypt));
-app.get('/products', products.handleProducts())
+app.get('/products', products.handleProducts);
+app.post('/add-feedback', products.handleAddFeedback)
+app.put('/add-upvote/:id', upvotes.handleAddUpvotes);
 
 app.listen(PORT, () => {
     console.log(`app is running on port ${PORT}`)

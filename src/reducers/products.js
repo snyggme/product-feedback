@@ -2,13 +2,9 @@ import {
     GET_PRODUCTS_REQUEST,
     GET_PRODUCTS_SUCCESS,
     GET_PRODUCTS_FAIL,
-    POST_PRODUCT_REQUEST,
-    POST_PRODUCT_SUCCESS,
-    POST_PRODUCT_FAIL,
-	PUT_PRODUCT_REQUEST,
-    PUT_PRODUCT_SUCCESS,
-    PUT_PRODUCT_FAIL,
-	ADD_FEEDBACK_TO_PRODUCT
+    POST_FEEDBACK_TO_PRODUCT_REQUEST,
+    POST_FEEDBACK_TO_PRODUCT_SUCCESS,
+    POST_FEEDBACK_TO_PRODUCT_FAIL,
 } from '../actions/ProductAction';
 
 const initialState = {
@@ -19,11 +15,6 @@ const initialState = {
 
 export const productsReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case ADD_FEEDBACK_TO_PRODUCT:
-			return {
-				...state,
-				items: JSON.parse(JSON.stringify(action.payload))
-			}
 		case GET_PRODUCTS_REQUEST:
 			return {
 				...state,
@@ -44,50 +35,19 @@ export const productsReducer = (state = initialState, action) => {
 					msg: action.payload
 				}
 			}
-		case PUT_PRODUCT_REQUEST:
+		case POST_FEEDBACK_TO_PRODUCT_REQUEST:
 			return {
 				...state,
 				error: null,
 				isLoading: true
 			}
-		case PUT_PRODUCT_SUCCESS:
-			const { _id } = action.payload;
-
-			const i = state.feeds.findIndex(feed => feed._id === _id)
-
+		case POST_FEEDBACK_TO_PRODUCT_SUCCESS:
 			return {
 				error: null,
 				isLoading: false,
-				items: [
-					...state.items.slice(0, i),
-					action.payload, 
-					...state.items.slice(i + 1)
-				]
+				items: JSON.parse(JSON.stringify(action.payload))
 			}
-		case PUT_PRODUCT_FAIL:
-			return {
-				...state,
-				isLoading: false,
-				error: {
-					msg: action.payload
-				}
-			}
-		case POST_PRODUCT_REQUEST:
-			return {
-				...state,
-				error: null,
-				isLoading: true
-			}
-		case POST_PRODUCT_SUCCESS:
-			return {
-				error: null,
-				isLoading: false,
-				items: [
-					...state.items,
-					action.payload
-				]
-			}
-		case POST_PRODUCT_FAIL:
+		case POST_FEEDBACK_TO_PRODUCT_FAIL:
 			return {
 				...state,
 				isLoading: false,

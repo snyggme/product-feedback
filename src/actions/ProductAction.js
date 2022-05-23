@@ -1,26 +1,20 @@
 import { 
 	cachedProducts,
-	httpGetProducts 
+	httpGetProducts, 
+	httpPostProductFeedback
 } from '../utils/network';
-import { addFeedbackToProduct } from '../utils/products';
 
 export const GET_PRODUCTS_REQUEST = 'GET_PRODUCTS_REQUEST';
 export const GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS';
 export const GET_PRODUCTS_FAIL = 'GET_PRODUCTS_FAIL';
 
-export const POST_PRODUCT_REQUEST = 'POST_PRODUCT_REQUEST';
-export const POST_PRODUCT_SUCCESS = 'POST_PRODUCT_SUCCESS';
-export const POST_PRODUCT_FAIL = 'POST_PRODUCT_FAIL';
-
-export const PUT_PRODUCT_REQUEST = 'PUT_PRODUCT_REQUEST';
-export const PUT_PRODUCT_SUCCESS = 'PUT_PRODUCT_SUCCESS';
-export const PUT_PRODUCT_FAIL = 'PUT_PRODUCT_FAIL';
+export const POST_FEEDBACK_TO_PRODUCT_REQUEST = 'POST_FEEDBACK_TO_PRODUCT_REQUEST';
+export const POST_FEEDBACK_TO_PRODUCT_SUCCESS = 'POST_FEEDBACK_TO_PRODUCT_SUCCESS';
+export const POST_FEEDBACK_TO_PRODUCT_FAIL = 'POST_FEEDBACK_TO_PRODUCT_FAIL';
 
 export const GET_FILTERED_FEEDBACKS = 'GET_FILTERED_FEEDBACKS';
 export const SET_FILTER_FOR_FEEDBACKS = 'SET_FILTER_FOR_FEEDBACKS';
 export const SET_ACTIVE_FEEDBACKS = 'SET_ACTIVE_FEEDBACKS';
-
-export const ADD_FEEDBACK_TO_PRODUCT = 'ADD_FEEDBACK_TO_PRODUCT';
 
 export const catchProducts = () => {
 	return dispatch => {
@@ -36,41 +30,10 @@ export const catchProducts = () => {
 
 export const addFeedback = (feedback, productId) => {
 	return (dispatch, getState) => {
-		const { products: { items } } = getState();
-
 		dispatch({
-			type: ADD_FEEDBACK_TO_PRODUCT,
-			payload: addFeedbackToProduct(items, feedback, productId)
-		})
+			type: POST_FEEDBACK_TO_PRODUCT_REQUEST
+		});
+
+		return httpPostProductFeedback(dispatch, getState, feedback, productId)
 	}
 }
-
-// export const createFeed = (feed) => {
-// 	return async dispatch => {
-// 		dispatch({
-// 			type: POST_FEED_REQUEST
-// 		});
-
-// 		return await httpPostFeed(dispatch, feed);
-// 	}
-// }
-
-// export const updateFeed = (feed, id) => {
-// 	return async dispatch => {
-// 		dispatch({
-// 			type: PUT_FEED_REQUEST
-// 		});
-
-// 		await httpPutFeed(dispatch, feed, id);
-// 	}
-// }
-
-// export const deleteFeed = (id) => {
-// 	return dispatch => {
-// 		dispatch({
-// 			type: DELETE_FEED_REQUEST
-// 		});
-
-// 		httpDeleteFeed(dispatch, id);
-// 	}
-// }

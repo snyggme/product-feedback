@@ -2,10 +2,11 @@ import {
 	GET_FILTERED_FEEDBACKS,
 	SET_FILTER_FOR_FEEDBACKS,
 	SET_ACTIVE_FEEDBACKS,
-	ADD_UPVOTE,
+	// ADD_UPVOTE,
 	GET_FEEDBACKS_REQUEST,
 	GET_FEEDBACKS_SUCCESS,
-	GET_FEEDBACKS_FAIL
+	PUT_ADD_UPVOTE_SUCCESS,
+	PUT_ADD_UPVOTE_FAIL
 } from '../actions/FeedbackAction';
 
 const initialState = {
@@ -30,15 +31,6 @@ export const feedbacksReducer = (state = initialState, action) => {
 				items: JSON.parse(JSON.stringify(action.payload)),
 				filtered: JSON.parse(JSON.stringify(action.payload)),
 				isLoading: false,
-				error: null
-			}
-		case GET_FEEDBACKS_FAIL:
-			return {
-				...state,
-				isLoading: false,
-				error: {
-					msg: action.payload
-				}
 			}
 		case SET_FILTER_FOR_FEEDBACKS: 
 			return {
@@ -57,12 +49,23 @@ export const feedbacksReducer = (state = initialState, action) => {
                 ...state,
 				filtered: JSON.parse(JSON.stringify(action.payload))
 			}
-		case ADD_UPVOTE: 
+		case PUT_ADD_UPVOTE_SUCCESS: 
 			return {
                 ...state,
 				items: JSON.parse(JSON.stringify(action.payload.items)),
 				filtered: JSON.parse(JSON.stringify(action.payload.filtered))
 			}
+		case PUT_ADD_UPVOTE_FAIL: 
+			return {
+                ...state,
+				error: action.payload
+			}
+		// case ADD_UPVOTE: 
+		// 	return {
+        //         ...state,
+		// 		items: JSON.parse(JSON.stringify(action.payload.items)),
+		// 		filtered: JSON.parse(JSON.stringify(action.payload.filtered))
+		// 	}
  		default:
 			return state;
 	}
