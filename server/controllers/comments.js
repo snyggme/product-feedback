@@ -6,6 +6,7 @@ const handleAddComment = (req, res) => {
     console.log('comment', comment)
     console.log(id)
     return res.json({ id: id.feedback });
+    
 }
 
 module.exports = {
