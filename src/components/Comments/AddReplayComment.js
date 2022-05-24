@@ -1,24 +1,26 @@
 import { useState, useRef } from 'react';
+import { useParams } from "react-router-dom";
 import { connect } from 'react-redux';
 import { 
     setReplayKey, 
     postComment 
 } from "../../actions/CommentAction";
 
-function AddReplayComment({ id, commentUsername, username, setReplayKey, postComment }) {
+function AddReplayComment({ id, commentUsername, setReplayKey, postComment }) {
     const [text, setText] = useState(`@${commentUsername}, `);
-
+    const { productId, feedbackId } = useParams();
     const textArea = useRef(null);
 
     const handleTextArea = (e) => {
         setText(e.target.value);
     }
 
-    const handlePost = () => {
+    const handlePost = async () => {
         if (text.length !== 0 && text.trimEnd() !== `@${commentUsername},`) {
             setText('');
             setReplayKey(-1);
-            postComment(text, username, id)
+            const ret = await postComment(text, id, feedbackId, productId);
+            console.log('returning from server', ret)
         }
     }
 
@@ -36,20 +38,14 @@ function AddReplayComment({ id, commentUsername, username, setReplayKey, postCom
     )
 }
 
-const mapStateToProps = store => {
-    return {
-        username: store.auth.user.name
-    }
-}
-
 const mapDispatchToProps = dispatch => {
     return {
         setReplayKey: (key) => dispatch(setReplayKey(key)),
-        postComment: (comment, username, messageId) => dispatch(postComment(comment, username, messageId))
+        postComment: (comment, messageId, feedbackId, productId) => dispatch(postComment(comment, messageId, feedbackId, productId))
     }
 }
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(AddReplayComment);

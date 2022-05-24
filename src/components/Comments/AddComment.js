@@ -1,12 +1,14 @@
 import { useState } from 'react';
+import { useParams } from "react-router-dom";
 import { connect } from 'react-redux';
 import { postComment } from "../../actions/CommentAction";
 
 const MAX_LEFT_CHARS = 250;
 
-function AddComment({ postComment, username }) {    
+function AddComment({ postComment }) {    
     const [leftChars, setleftChars] = useState(MAX_LEFT_CHARS);
     const [text, setText] = useState('');
+    const { productId, feedbackId } = useParams();
 
     const handleTextArea = (e) => {
         setText(e.target.value)
@@ -16,7 +18,7 @@ function AddComment({ postComment, username }) {
     const handleClick = () => {
         if (text.length !== 0) {
             setText('');
-            postComment(text, username, -1)
+            postComment(text, -1, feedbackId, productId)
         }
     }
 
@@ -36,12 +38,6 @@ function AddComment({ postComment, username }) {
     )
 }
 
-const mapStateToProps = store => {
-    return {
-        username: store.auth.user.name
-    }
-}
-
 const mapDispatchToProps = dispatch => {
     return {
         postComment: (comment, username, messageId) => dispatch(postComment(comment, username, messageId))
@@ -49,6 +45,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(AddComment);

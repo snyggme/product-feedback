@@ -833,17 +833,6 @@ export function getProducts(name = '') {
     return products.find(product => product.name.toLowerCase() === name.toLowerCase());
 }
 
-// function getProductsServer(name = '') {
-//     if (name === '')
-//         return structuredClone(products);
-
-//     return products.find(product => product.name.toLowerCase() === name.toLowerCase());
-// }
-
-// module.exports = {
-//     getProductsServer
-// }
-
 export function addComment(comments, comment, username = 'jimbo' , messageId = -1) {
     // TODO
     // make id unique

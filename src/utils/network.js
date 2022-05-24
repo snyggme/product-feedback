@@ -4,7 +4,13 @@ import {
     POST_FEEDBACK_TO_PRODUCT_SUCCESS,
     POST_FEEDBACK_TO_PRODUCT_FAIL
 } from '../actions/ProductAction';
-import { addUpvoteToFeedback, addFeedbackToProduct } from '../utils/products';
+import { POST_COMMENT_SUCCESS, POST_COMMENT_FAIL } from '../actions/CommentAction';
+import { 
+    addUpvoteToFeedback, 
+    addFeedbackToProduct,
+    flatComments, 
+    addComment
+ } from '../utils/products';
 
 export let cachedProducts = false;
 
@@ -279,6 +285,54 @@ export const httpPostProductFeedback = async (dispatch, getState, feedback, prod
     } catch (e) {
         dispatch({
             type: POST_FEEDBACK_TO_PRODUCT_FAIL,
+            payload: new Error(e).message
+        })
+    }
+}
+
+export const httpPostAddComment = async (...args) => {
+    const [ dispatch, getState, comment, user, messageId, feedbackId, productId ] = args;
+
+    try {
+        const response = await fetch(`${API_ROOT}/add-comment`, {  
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+                comment, 
+                user, 
+                id: { 
+                    message: messageId, 
+                    feedback: feedbackId, 
+                    product: productId 
+                } 
+            })
+        });
+
+        if (response.ok) {
+            const json = await response.json();
+
+            const { comments: { items } } = getState()
+            const newComments = addComment(items, comment, user.name, messageId);
+            const flatten = flatComments(newComments);
+    
+            dispatch({
+                type: POST_COMMENT_SUCCESS,
+                payload: {
+                    comments: newComments,
+                    flatten
+                }
+            });
+
+            return json.id
+        } else {
+            throw new Error(response.status);            
+        }
+    } catch (e) {
+        dispatch({
+            type: POST_COMMENT_FAIL,
             payload: new Error(e).message
         })
     }

@@ -6,6 +6,7 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const products = require('./controllers/products');
 const upvotes = require('./controllers/upvotes');
+const comments = require('./controllers/comments');
 
 const db = [ { name: 'bob', email: 'bob@gmail.com', hash: bcrypt.hashSync('123', 8), city: 'Saint-Petersburg' } ]
 
@@ -33,6 +34,7 @@ app.post('/register', register.handleRegister(db, bcrypt));
 app.get('/products', products.handleProducts);
 app.post('/add-feedback', products.handleAddFeedback)
 app.put('/add-upvote/:id', upvotes.handleAddUpvotes);
+app.post('/add-comment', comments.handleAddComment);
 
 app.listen(PORT, () => {
     console.log(`app is running on port ${PORT}`)
