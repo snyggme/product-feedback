@@ -11,7 +11,7 @@ const root = createRoot(container);
 
 const Root = ({ store }) => (
 	<Provider store={store}>
-    	<Router>
+    	<Router basename={process.env.PUBLIC_URL}>
 			<App />
 		</Router>
   	</Provider>

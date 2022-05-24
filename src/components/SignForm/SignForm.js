@@ -19,7 +19,7 @@ function SignForm({ type, setModal, signinUser, createUser, auth }) {
 
         if (type === 'login') {
             const user = {
-                email: inputName.current.value,
+                name: inputName.current.value,
                 password: inputPass.current.value
             }
 
