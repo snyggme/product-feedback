@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/product-feedback/static/css/main.040420c1.css",
-    "main.js": "/product-feedback/static/js/main.85bdf75e.js",
+    "main.js": "/product-feedback/static/js/main.8c254ead.js",
     "static/media/sticker.png": "/product-feedback/static/media/sticker.3eb7b447ad46a892a2b2.png",
     "index.html": "/product-feedback/index.html",
     "main.040420c1.css.map": "/product-feedback/static/css/main.040420c1.css.map",
-    "main.85bdf75e.js.map": "/product-feedback/static/js/main.85bdf75e.js.map"
+    "main.8c254ead.js.map": "/product-feedback/static/js/main.8c254ead.js.map"
   },
   "entrypoints": [
     "static/css/main.040420c1.css",
-    "static/js/main.85bdf75e.js"
+    "static/js/main.8c254ead.js"
   ]
 }
